@@ -1,0 +1,8 @@
+${PODS_ROOT}/Target Support Files/Pods-QuerenciaCloudKit/Pods-QuerenciaCloudKit-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Charts/Charts.framework
+${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework
+${BUILT_PRODUCTS_DIR}/HanekeSwift/Haneke.framework
+${BUILT_PRODUCTS_DIR}/HintPod/HintPod.framework
+${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework
+${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework
+${BUILT_PRODUCTS_DIR}/WhatsNewKit/WhatsNewKit.framework

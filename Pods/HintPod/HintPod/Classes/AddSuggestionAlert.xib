@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AddSuggestionAlert" customModule="HintPod" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eal-KS-TvM">
+                    <rect key="frame" x="32" y="298" width="350" height="300"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Suggestion" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gj0-0M-MBW">
+                            <rect key="frame" x="16" y="20" width="318" height="18"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Short title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KQq-pu-p0v">
+                            <rect key="frame" x="16" y="58" width="318" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ltE-Bg-QXj">
+                            <rect key="frame" x="16" y="108" width="318" height="83"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Description"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                    <color key="value" systemColor="tertiaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </textView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLA-Cf-2r4">
+                            <rect key="frame" x="16" y="259" width="318" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="hCU-82-QcN"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="tappedCancel:" destination="iN0-l3-epB" eventType="touchUpInside" id="uLk-YO-Eke"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jo-fz-AiK">
+                            <rect key="frame" x="16" y="207" width="318" height="40"/>
+                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="3xh-AW-mnE"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="16"/>
+                            <state key="normal" title="Submit">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="12"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="tappedSubmit:" destination="iN0-l3-epB" eventType="touchUpInside" id="HQP-N1-I3c"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="gj0-0M-MBW" firstAttribute="top" secondItem="Eal-KS-TvM" secondAttribute="top" constant="20" id="2Fu-lJ-Tan"/>
+                        <constraint firstItem="gj0-0M-MBW" firstAttribute="leading" secondItem="Eal-KS-TvM" secondAttribute="leading" constant="16" id="3b0-UD-n3c"/>
+                        <constraint firstItem="gj0-0M-MBW" firstAttribute="centerX" secondItem="Eal-KS-TvM" secondAttribute="centerX" id="3iB-mq-bRu"/>
+                        <constraint firstItem="ltE-Bg-QXj" firstAttribute="leading" secondItem="KQq-pu-p0v" secondAttribute="leading" id="B0H-hJ-xsV"/>
+                        <constraint firstItem="ltE-Bg-QXj" firstAttribute="trailing" secondItem="KQq-pu-p0v" secondAttribute="trailing" id="DC1-B7-bwH"/>
+                        <constraint firstItem="gLA-Cf-2r4" firstAttribute="leading" secondItem="Eal-KS-TvM" secondAttribute="leading" constant="16" id="K7n-cR-kEL"/>
+                        <constraint firstAttribute="trailing" secondItem="4jo-fz-AiK" secondAttribute="trailing" constant="16" id="MtH-UC-h7i"/>
+                        <constraint firstItem="4jo-fz-AiK" firstAttribute="leading" secondItem="Eal-KS-TvM" secondAttribute="leading" constant="16" id="VhP-G9-7xd"/>
+                        <constraint firstAttribute="bottom" secondItem="gLA-Cf-2r4" secondAttribute="bottom" constant="16" id="Vw9-Bp-RRh"/>
+                        <constraint firstAttribute="trailing" secondItem="gj0-0M-MBW" secondAttribute="trailing" constant="16" id="alD-77-tgR"/>
+                        <constraint firstItem="gLA-Cf-2r4" firstAttribute="top" secondItem="4jo-fz-AiK" secondAttribute="bottom" constant="12" id="e9t-Gq-C4U"/>
+                        <constraint firstItem="KQq-pu-p0v" firstAttribute="leading" secondItem="Eal-KS-TvM" secondAttribute="leading" constant="16" id="ggv-7Y-h7g"/>
+                        <constraint firstItem="KQq-pu-p0v" firstAttribute="top" secondItem="gj0-0M-MBW" secondAttribute="bottom" constant="20" id="gk7-3L-oM0"/>
+                        <constraint firstAttribute="trailing" secondItem="KQq-pu-p0v" secondAttribute="trailing" constant="16" id="ndn-nQ-7Wi"/>
+                        <constraint firstItem="ltE-Bg-QXj" firstAttribute="top" secondItem="KQq-pu-p0v" secondAttribute="bottom" constant="16" id="qtT-Bc-dMA"/>
+                        <constraint firstAttribute="height" constant="300" id="sFK-DZ-9qr"/>
+                        <constraint firstAttribute="trailing" secondItem="gLA-Cf-2r4" secondAttribute="trailing" constant="16" id="u9R-uH-TY9"/>
+                        <constraint firstItem="4jo-fz-AiK" firstAttribute="top" secondItem="ltE-Bg-QXj" secondAttribute="bottom" constant="16" id="vWZ-hs-zWQ"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.68999999999999995" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Eal-KS-TvM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="Ojg-ns-WS2"/>
+                <constraint firstItem="Eal-KS-TvM" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="nua-1G-Emi"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Eal-KS-TvM" secondAttribute="trailing" constant="32" id="sSY-6B-7aM"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="alertView" destination="Eal-KS-TvM" id="SNr-v9-laB"/>
+                <outlet property="descriptionTextView" destination="ltE-Bg-QXj" id="LW0-lu-SHD"/>
+                <outlet property="titleField" destination="KQq-pu-p0v" id="zhf-eA-sSc"/>
+            </connections>
+            <point key="canvasLocation" x="138.75" y="92.957746478873247"/>
+        </view>
+    </objects>
+</document>

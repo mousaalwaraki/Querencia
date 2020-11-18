@@ -1,0 +1,50 @@
+PODS:
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
+  - FSCalendar (2.8.1)
+  - HanekeSwift (1.2)
+  - HintPod (1.0.7):
+    - "UITextView+Placeholder (~> 1.4.0)"
+  - IQKeyboardManagerSwift (6.5.6)
+  - "UITextView+Placeholder (1.4.0)"
+  - WhatsNewKit (1.3.7)
+
+DEPENDENCIES:
+  - Charts
+  - FSCalendar
+  - HanekeSwift (from `https://github.com/Haneke/HanekeSwift`)
+  - HintPod
+  - IQKeyboardManagerSwift
+  - WhatsNewKit
+
+SPEC REPOS:
+  trunk:
+    - Charts
+    - FSCalendar
+    - HintPod
+    - IQKeyboardManagerSwift
+    - "UITextView+Placeholder"
+    - WhatsNewKit
+
+EXTERNAL SOURCES:
+  HanekeSwift:
+    :git: https://github.com/Haneke/HanekeSwift
+
+CHECKOUT OPTIONS:
+  HanekeSwift:
+    :commit: 41c1efc82a9b7cefa4381f79669ab1e32b867b16
+    :git: https://github.com/Haneke/HanekeSwift
+
+SPEC CHECKSUMS:
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
+  HanekeSwift: 0ee43c4cfe871ef8cc7382bda8729b6374c41748
+  HintPod: 2c31762530ff6de9c9ab249f9948f464ad87f0ce
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
+  "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
+  WhatsNewKit: c87028c4059dccd113495422801914cc53f6aab0
+
+PODFILE CHECKSUM: 564b24e2cfeb0ad820ba0d8020700021bde79dbd
+
+COCOAPODS: 1.9.1

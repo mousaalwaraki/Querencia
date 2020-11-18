@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JournalResponseViewController" customModule="QuerenciaCloudKit" customModuleProvider="target">
+            <connections>
+                <outlet property="answerTextView" destination="KJ9-x3-6at" id="3hf-Cd-hWz"/>
+                <outlet property="questionLabel" destination="Vgb-No-9OH" id="rgI-Wl-hgv"/>
+                <outlet property="view" destination="GXC-Tl-ROt" id="Lnx-Q4-7JH"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="GXC-Tl-ROt">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ma1-qK-bH7">
+                    <rect key="frame" x="0.0" y="44" width="414" height="100"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Journal prompt will be here!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgb-No-9OH">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                    <constraints>
+                        <constraint firstItem="Vgb-No-9OH" firstAttribute="top" secondItem="ma1-qK-bH7" secondAttribute="top" id="3TC-1f-G4J"/>
+                        <constraint firstAttribute="height" constant="100" id="Fd3-ZG-VoE"/>
+                        <constraint firstItem="Vgb-No-9OH" firstAttribute="leading" secondItem="ma1-qK-bH7" secondAttribute="leading" id="X4e-TA-0bS"/>
+                        <constraint firstAttribute="trailing" secondItem="Vgb-No-9OH" secondAttribute="trailing" id="ZeV-UE-BIE"/>
+                        <constraint firstAttribute="bottom" secondItem="Vgb-No-9OH" secondAttribute="bottom" id="keN-aj-u2a"/>
+                    </constraints>
+                </view>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Here will be answer!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KJ9-x3-6at">
+                    <rect key="frame" x="20" y="164" width="374" height="678"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="textColor" systemColor="labelColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JLz-3q-5gA">
+                    <rect key="frame" x="354" y="119" width="50" height="50"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right" translatesAutoresizingMaskIntoConstraints="NO" id="Sl5-1f-B1n">
+                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="S2x-xF-67b"/>
+                                <constraint firstAttribute="width" constant="50" id="VTA-DT-zTZ"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstItem="Sl5-1f-B1n" firstAttribute="centerX" secondItem="JLz-3q-5gA" secondAttribute="centerX" id="LwO-bG-CWD"/>
+                        <constraint firstItem="Sl5-1f-B1n" firstAttribute="centerY" secondItem="JLz-3q-5gA" secondAttribute="centerY" id="XqZ-GS-VbB"/>
+                        <constraint firstAttribute="height" constant="50" id="bjm-sj-Nrv"/>
+                        <constraint firstAttribute="width" constant="50" id="lfT-LL-2WY"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="mrB-wx-E1x" appends="YES" id="5As-kd-kfC"/>
+                    </connections>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="ugq-dR-5Gx"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="JLz-3q-5gA" firstAttribute="top" secondItem="ma1-qK-bH7" secondAttribute="bottom" constant="-25" id="2lk-Qa-rUF"/>
+                <constraint firstItem="ugq-dR-5Gx" firstAttribute="trailing" secondItem="ma1-qK-bH7" secondAttribute="trailing" id="67t-J3-pCJ"/>
+                <constraint firstItem="ugq-dR-5Gx" firstAttribute="trailing" secondItem="KJ9-x3-6at" secondAttribute="trailing" constant="20" id="BSz-fY-8dZ"/>
+                <constraint firstItem="ma1-qK-bH7" firstAttribute="leading" secondItem="ugq-dR-5Gx" secondAttribute="leading" id="GRV-Q1-vi9"/>
+                <constraint firstItem="ma1-qK-bH7" firstAttribute="top" secondItem="ugq-dR-5Gx" secondAttribute="top" id="Ryy-fD-ogw"/>
+                <constraint firstItem="KJ9-x3-6at" firstAttribute="leading" secondItem="ugq-dR-5Gx" secondAttribute="leading" constant="20" id="ei9-4q-d12"/>
+                <constraint firstItem="KJ9-x3-6at" firstAttribute="top" secondItem="ma1-qK-bH7" secondAttribute="bottom" constant="20" id="exh-xI-SwB"/>
+                <constraint firstItem="ugq-dR-5Gx" firstAttribute="bottom" secondItem="KJ9-x3-6at" secondAttribute="bottom" constant="20" id="m3G-Nn-Ih5"/>
+                <constraint firstItem="ugq-dR-5Gx" firstAttribute="trailing" secondItem="JLz-3q-5gA" secondAttribute="trailing" constant="10" id="uj1-Fj-13e"/>
+            </constraints>
+            <point key="canvasLocation" x="403" y="119"/>
+        </view>
+        <tapGestureRecognizer id="mrB-wx-E1x">
+            <connections>
+                <action selector="nextButtonTapped:" destination="-1" id="xce-Pb-JbQ"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="right" width="512" height="512"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

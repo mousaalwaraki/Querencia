@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AllResources" representedClassName="AllResources" syncable="YES" codeGenerationType="class">
+        <attribute name="actionUrl" optional="YES" attributeType="String"/>
+        <attribute name="category" optional="YES" attributeType="String"/>
+        <attribute name="imageUrl" optional="YES" attributeType="String"/>
+        <attribute name="subtitle" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="CurrentResources" representedClassName="CurrentResources" syncable="YES" codeGenerationType="class">
+        <attribute name="actionUrl" optional="YES" attributeType="String"/>
+        <attribute name="category" optional="YES" attributeType="String"/>
+        <attribute name="categoryAndNumber" optional="YES" attributeType="String"/>
+        <attribute name="imageUrl" optional="YES" attributeType="String"/>
+        <attribute name="subtitle" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="MotivationalQuotes" representedClassName="MotivationalQuotes" syncable="YES" codeGenerationType="class">
+        <attribute name="quote" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="AllResources" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="CurrentResources" positionX="-54" positionY="-9" width="128" height="133"/>
+        <element name="MotivationalQuotes" positionX="-36" positionY="9" width="128" height="58"/>
+    </elements>
+</model>

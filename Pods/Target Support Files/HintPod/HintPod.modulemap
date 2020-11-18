@@ -1,0 +1,6 @@
+framework module HintPod {
+  umbrella header "HintPod-umbrella.h"
+
+  export *
+  module * { export * }
+}

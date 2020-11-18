@@ -1,0 +1,675 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4104CAFF25601DB10081E268 /* QuestionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4104CAFE25601DB10081E268 /* QuestionsTableViewCell.swift */; };
+		41260761255E91B100694138 /* RatingSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41260760255E91B100694138 /* RatingSwitch.swift */; };
+		4131DAED255D06E50027C7C1 /* AllResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4131DAEC255D06E50027C7C1 /* AllResourcesViewController.swift */; };
+		415C3100255FE96600A0E977 /* EditJournalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415C30FF255FE96600A0E977 /* EditJournalsViewController.swift */; };
+		415C3103255FEAC500A0E977 /* JournalNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415C3102255FEAC500A0E977 /* JournalNameTableViewCell.swift */; };
+		41656574255EA2D8004F4996 /* ReviewJournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41656573255EA2D8004F4996 /* ReviewJournalViewController.swift */; };
+		417E7333255D0F53002E0F5B /* ResourceModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 417E7331255D0F53002E0F5B /* ResourceModel.xcdatamodeld */; };
+		41A2016A25532EED00A5C36B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A2016925532EED00A5C36B /* AppDelegate.swift */; };
+		41A2016C25532EED00A5C36B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A2016B25532EED00A5C36B /* SceneDelegate.swift */; };
+		41A2017125532EED00A5C36B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41A2016F25532EED00A5C36B /* Main.storyboard */; };
+		41A2017425532EED00A5C36B /* QuerenciaCloudKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41A2017225532EED00A5C36B /* QuerenciaCloudKit.xcdatamodeld */; };
+		41A2017625532EF300A5C36B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41A2017525532EF300A5C36B /* Assets.xcassets */; };
+		41A2017925532EF300A5C36B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41A2017725532EF300A5C36B /* LaunchScreen.storyboard */; };
+		41C347D725629B3A00158B05 /* PromptsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C347D625629B3A00158B05 /* PromptsTableViewCell.swift */; };
+		41C6F487255CAC910051CA65 /* PublicCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6F486255CAC910051CA65 /* PublicCoreDataManager.swift */; };
+		41C6F48A255CB1190051CA65 /* AddingResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6F489255CB1190051CA65 /* AddingResourcesViewController.swift */; };
+		41D8A1012561635A00A10800 /* PromptsReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8A1002561635A00A10800 /* PromptsReview.swift */; };
+		41D8A104256183D500A10800 /* TopTagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8A103256183D500A10800 /* TopTagTableViewCell.swift */; };
+		41D8A10A25628A0200A10800 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8A10825628A0200A10800 /* LocalNotificationManager.swift */; };
+		41D8A10B25628A0200A10800 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8A10925628A0200A10800 /* LocalNotification.swift */; };
+		41D8A11125628A3100A10800 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8A10D25628A3100A10800 /* NotificationsVC.swift */; };
+		41D8A11225628A3100A10800 /* NotificationsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41D8A10E25628A3100A10800 /* NotificationsVC.xib */; };
+		41D8A11325628A3100A10800 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8A10F25628A3100A10800 /* AboutVC.swift */; };
+		41D8A11425628A3100A10800 /* AboutVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41D8A11025628A3100A10800 /* AboutVC.xib */; };
+		41FAECB32559E88E001F7F3D /* JournalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FAECB22559E88E001F7F3D /* JournalModel.swift */; };
+		41FAECB72559E8A3001F7F3D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FAECB62559E8A3001F7F3D /* CoreDataManager.swift */; };
+		41FAECBA2559E8D3001F7F3D /* ResourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FAECB92559E8D3001F7F3D /* ResourceModel.swift */; };
+		41FAECBE2559E8E1001F7F3D /* ResourcesChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FAECBD2559E8E1001F7F3D /* ResourcesChoice.swift */; };
+		41FAECC12559E952001F7F3D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FAECC02559E952001F7F3D /* Extensions.swift */; };
+		41FAECC82559EA06001F7F3D /* TagsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FAECC72559EA06001F7F3D /* TagsCollectionViewCell.swift */; };
+		41FAECCC2559EA46001F7F3D /* JournalReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FAECCB2559EA46001F7F3D /* JournalReviewTableViewCell.swift */; };
+		41FAECCF2559EA68001F7F3D /* ResourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FAECCE2559EA68001F7F3D /* ResourceTableViewCell.swift */; };
+		41FAECD22559EA73001F7F3D /* BooksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FAECD12559EA73001F7F3D /* BooksTableViewCell.swift */; };
+		41FAECD52559EA89001F7F3D /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FAECD42559EA89001F7F3D /* SettingsTableViewCell.swift */; };
+		41FAECD82559EAEC001F7F3D /* AuthenticateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FAECD72559EAEC001F7F3D /* AuthenticateViewController.swift */; };
+		41FAECDB2559EAFA001F7F3D /* WhatsNewKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FAECDA2559EAFA001F7F3D /* WhatsNewKitViewController.swift */; };
+		41FAECDE2559EB10001F7F3D /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FAECDD2559EB10001F7F3D /* DayViewController.swift */; };
+		41FAECE12559EB24001F7F3D /* CalendarReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FAECE02559EB24001F7F3D /* CalendarReviewViewController.swift */; };
+		41FAECE42559EB39001F7F3D /* ResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FAECE32559EB39001F7F3D /* ResourcesViewController.swift */; };
+		41FAECE72559EB46001F7F3D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FAECE62559EB46001F7F3D /* SettingsViewController.swift */; };
+		41FAECF02559EB83001F7F3D /* EditPromptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FAECEF2559EB83001F7F3D /* EditPromptsViewController.swift */; };
+		41FAECF32559EB95001F7F3D /* InspirationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FAECF22559EB95001F7F3D /* InspirationViewController.swift */; };
+		41FBC7BD255ADCE500FFAE45 /* SmileyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FBC7BC255ADCE500FFAE45 /* SmileyCollectionViewCell.swift */; };
+		41FBC7C0255AE17400FFAE45 /* SectionTitlesCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FBC7BF255AE17400FFAE45 /* SectionTitlesCollectionReusableView.swift */; };
+		41FBC7C4255B00B700FFAE45 /* JournalResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FBC7C2255B00B700FFAE45 /* JournalResponseViewController.swift */; };
+		41FBC7C5255B00B700FFAE45 /* JournalResponseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41FBC7C3255B00B700FFAE45 /* JournalResponseViewController.xib */; };
+		41FBC7C9255B6A4600FFAE45 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FBC7C8255B6A4600FFAE45 /* ResponseModel.swift */; };
+		93914886D4B1D39B80794230 /* Pods_QuerenciaCloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EA69252A8EF3388E0394C92 /* Pods_QuerenciaCloudKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4104CAFE25601DB10081E268 /* QuestionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsTableViewCell.swift; sourceTree = "<group>"; };
+		41260760255E91B100694138 /* RatingSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingSwitch.swift; sourceTree = "<group>"; };
+		4131DAEC255D06E50027C7C1 /* AllResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllResourcesViewController.swift; sourceTree = "<group>"; };
+		415C30FF255FE96600A0E977 /* EditJournalsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditJournalsViewController.swift; sourceTree = "<group>"; };
+		415C3102255FEAC500A0E977 /* JournalNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalNameTableViewCell.swift; sourceTree = "<group>"; };
+		41656573255EA2D8004F4996 /* ReviewJournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewJournalViewController.swift; sourceTree = "<group>"; };
+		417E7332255D0F53002E0F5B /* ResourceModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ResourceModel.xcdatamodel; sourceTree = "<group>"; };
+		41A2016625532EED00A5C36B /* QuerenciaCloudKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuerenciaCloudKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		41A2016925532EED00A5C36B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		41A2016B25532EED00A5C36B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		41A2017025532EED00A5C36B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		41A2017325532EED00A5C36B /* QuerenciaCloudKit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QuerenciaCloudKit.xcdatamodel; sourceTree = "<group>"; };
+		41A2017525532EF300A5C36B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		41A2017825532EF300A5C36B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		41A2017A25532EF300A5C36B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41C347D625629B3A00158B05 /* PromptsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromptsTableViewCell.swift; sourceTree = "<group>"; };
+		41C6F486255CAC910051CA65 /* PublicCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicCoreDataManager.swift; sourceTree = "<group>"; };
+		41C6F489255CB1190051CA65 /* AddingResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingResourcesViewController.swift; sourceTree = "<group>"; };
+		41D8A1002561635A00A10800 /* PromptsReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptsReview.swift; sourceTree = "<group>"; };
+		41D8A103256183D500A10800 /* TopTagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTagTableViewCell.swift; sourceTree = "<group>"; };
+		41D8A10825628A0200A10800 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		41D8A10925628A0200A10800 /* LocalNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
+		41D8A10D25628A3100A10800 /* NotificationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
+		41D8A10E25628A3100A10800 /* NotificationsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsVC.xib; sourceTree = "<group>"; };
+		41D8A10F25628A3100A10800 /* AboutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
+		41D8A11025628A3100A10800 /* AboutVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutVC.xib; sourceTree = "<group>"; };
+		41FAECB22559E88E001F7F3D /* JournalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalModel.swift; sourceTree = "<group>"; };
+		41FAECB62559E8A3001F7F3D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		41FAECB92559E8D3001F7F3D /* ResourceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceModel.swift; sourceTree = "<group>"; };
+		41FAECBD2559E8E1001F7F3D /* ResourcesChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesChoice.swift; sourceTree = "<group>"; };
+		41FAECC02559E952001F7F3D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		41FAECC72559EA06001F7F3D /* TagsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsCollectionViewCell.swift; sourceTree = "<group>"; };
+		41FAECCB2559EA46001F7F3D /* JournalReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalReviewTableViewCell.swift; sourceTree = "<group>"; };
+		41FAECCE2559EA68001F7F3D /* ResourceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceTableViewCell.swift; sourceTree = "<group>"; };
+		41FAECD12559EA73001F7F3D /* BooksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTableViewCell.swift; sourceTree = "<group>"; };
+		41FAECD42559EA89001F7F3D /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		41FAECD72559EAEC001F7F3D /* AuthenticateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateViewController.swift; sourceTree = "<group>"; };
+		41FAECDA2559EAFA001F7F3D /* WhatsNewKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewKitViewController.swift; sourceTree = "<group>"; };
+		41FAECDD2559EB10001F7F3D /* DayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
+		41FAECE02559EB24001F7F3D /* CalendarReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarReviewViewController.swift; sourceTree = "<group>"; };
+		41FAECE32559EB39001F7F3D /* ResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesViewController.swift; sourceTree = "<group>"; };
+		41FAECE62559EB46001F7F3D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		41FAECEF2559EB83001F7F3D /* EditPromptsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPromptsViewController.swift; sourceTree = "<group>"; };
+		41FAECF22559EB95001F7F3D /* InspirationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspirationViewController.swift; sourceTree = "<group>"; };
+		41FBC7BC255ADCE500FFAE45 /* SmileyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmileyCollectionViewCell.swift; sourceTree = "<group>"; };
+		41FBC7BF255AE17400FFAE45 /* SectionTitlesCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitlesCollectionReusableView.swift; sourceTree = "<group>"; };
+		41FBC7C2255B00B700FFAE45 /* JournalResponseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalResponseViewController.swift; sourceTree = "<group>"; };
+		41FBC7C3255B00B700FFAE45 /* JournalResponseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JournalResponseViewController.xib; sourceTree = "<group>"; };
+		41FBC7C8255B6A4600FFAE45 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
+		4EA69252A8EF3388E0394C92 /* Pods_QuerenciaCloudKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuerenciaCloudKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D315CB3656BFE475489BB20A /* Pods-QuerenciaCloudKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuerenciaCloudKit.release.xcconfig"; path = "Target Support Files/Pods-QuerenciaCloudKit/Pods-QuerenciaCloudKit.release.xcconfig"; sourceTree = "<group>"; };
+		DA77A2472B3A82634CF648BC /* Pods-QuerenciaCloudKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuerenciaCloudKit.debug.xcconfig"; path = "Target Support Files/Pods-QuerenciaCloudKit/Pods-QuerenciaCloudKit.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		41A2016325532EED00A5C36B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93914886D4B1D39B80794230 /* Pods_QuerenciaCloudKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		41A2015D25532EED00A5C36B = {
+			isa = PBXGroup;
+			children = (
+				41A2016825532EED00A5C36B /* QuerenciaCloudKit */,
+				41A2016725532EED00A5C36B /* Products */,
+				ED76D0DCBD7914D5C5E7622B /* Pods */,
+				B93F8116E1E25ECB2DE4C455 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		41A2016725532EED00A5C36B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				41A2016625532EED00A5C36B /* QuerenciaCloudKit.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		41A2016825532EED00A5C36B /* QuerenciaCloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				41A2017A25532EF300A5C36B /* Info.plist */,
+				41A2017225532EED00A5C36B /* QuerenciaCloudKit.xcdatamodeld */,
+				417E7331255D0F53002E0F5B /* ResourceModel.xcdatamodeld */,
+				41A2016925532EED00A5C36B /* AppDelegate.swift */,
+				41D8A10925628A0200A10800 /* LocalNotification.swift */,
+				41D8A10825628A0200A10800 /* LocalNotificationManager.swift */,
+				41A2016B25532EED00A5C36B /* SceneDelegate.swift */,
+				41A2016F25532EED00A5C36B /* Main.storyboard */,
+				41A2017725532EF300A5C36B /* LaunchScreen.storyboard */,
+				41A2017525532EF300A5C36B /* Assets.xcassets */,
+				41FAECC42559E96A001F7F3D /* Helpers */,
+				41FAECC32559E960001F7F3D /* Model */,
+				41FAECC52559E992001F7F3D /* View */,
+				41FAECC62559E9A5001F7F3D /* Controllers */,
+			);
+			path = QuerenciaCloudKit;
+			sourceTree = "<group>";
+		};
+		41C6F490255CB1810051CA65 /* AddingResources */ = {
+			isa = PBXGroup;
+			children = (
+				41C6F489255CB1190051CA65 /* AddingResourcesViewController.swift */,
+			);
+			path = AddingResources;
+			sourceTree = "<group>";
+		};
+		41FAECC32559E960001F7F3D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				41FAECB22559E88E001F7F3D /* JournalModel.swift */,
+				41FBC7C8255B6A4600FFAE45 /* ResponseModel.swift */,
+				41D8A1002561635A00A10800 /* PromptsReview.swift */,
+				41FAECB92559E8D3001F7F3D /* ResourceModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		41FAECC42559E96A001F7F3D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				41FAECC02559E952001F7F3D /* Extensions.swift */,
+				41260760255E91B100694138 /* RatingSwitch.swift */,
+				41FAECBD2559E8E1001F7F3D /* ResourcesChoice.swift */,
+				41FAECB62559E8A3001F7F3D /* CoreDataManager.swift */,
+				41C6F486255CAC910051CA65 /* PublicCoreDataManager.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		41FAECC52559E992001F7F3D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				41FAECC72559EA06001F7F3D /* TagsCollectionViewCell.swift */,
+				41FAECCB2559EA46001F7F3D /* JournalReviewTableViewCell.swift */,
+				41FAECCE2559EA68001F7F3D /* ResourceTableViewCell.swift */,
+				41C347D625629B3A00158B05 /* PromptsTableViewCell.swift */,
+				41D8A103256183D500A10800 /* TopTagTableViewCell.swift */,
+				415C3102255FEAC500A0E977 /* JournalNameTableViewCell.swift */,
+				4104CAFE25601DB10081E268 /* QuestionsTableViewCell.swift */,
+				41FBC7BF255AE17400FFAE45 /* SectionTitlesCollectionReusableView.swift */,
+				41FBC7BC255ADCE500FFAE45 /* SmileyCollectionViewCell.swift */,
+				41FAECD12559EA73001F7F3D /* BooksTableViewCell.swift */,
+				41FAECD42559EA89001F7F3D /* SettingsTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		41FAECC62559E9A5001F7F3D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				41FAECF52559EBA5001F7F3D /* EntryVCs */,
+				41FAECF82559EBC0001F7F3D /* JournalVCs */,
+				41FAECF92559EBD6001F7F3D /* ReviewVCs */,
+				41FAECFA2559EBEC001F7F3D /* SettingsVCs */,
+				41C6F490255CB1810051CA65 /* AddingResources */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		41FAECF52559EBA5001F7F3D /* EntryVCs */ = {
+			isa = PBXGroup;
+			children = (
+				41FAECDA2559EAFA001F7F3D /* WhatsNewKitViewController.swift */,
+				41FAECD72559EAEC001F7F3D /* AuthenticateViewController.swift */,
+			);
+			path = EntryVCs;
+			sourceTree = "<group>";
+		};
+		41FAECF82559EBC0001F7F3D /* JournalVCs */ = {
+			isa = PBXGroup;
+			children = (
+				41FAECDD2559EB10001F7F3D /* DayViewController.swift */,
+				41FBC7C2255B00B700FFAE45 /* JournalResponseViewController.swift */,
+				41FBC7C3255B00B700FFAE45 /* JournalResponseViewController.xib */,
+			);
+			path = JournalVCs;
+			sourceTree = "<group>";
+		};
+		41FAECF92559EBD6001F7F3D /* ReviewVCs */ = {
+			isa = PBXGroup;
+			children = (
+				41FAECE02559EB24001F7F3D /* CalendarReviewViewController.swift */,
+				41656573255EA2D8004F4996 /* ReviewJournalViewController.swift */,
+			);
+			path = ReviewVCs;
+			sourceTree = "<group>";
+		};
+		41FAECFA2559EBEC001F7F3D /* SettingsVCs */ = {
+			isa = PBXGroup;
+			children = (
+				41FAECE62559EB46001F7F3D /* SettingsViewController.swift */,
+				41D8A10F25628A3100A10800 /* AboutVC.swift */,
+				41D8A11025628A3100A10800 /* AboutVC.xib */,
+				41D8A10D25628A3100A10800 /* NotificationsVC.swift */,
+				41D8A10E25628A3100A10800 /* NotificationsVC.xib */,
+				41FAECE32559EB39001F7F3D /* ResourcesViewController.swift */,
+				4131DAEC255D06E50027C7C1 /* AllResourcesViewController.swift */,
+				41FAECEF2559EB83001F7F3D /* EditPromptsViewController.swift */,
+				415C30FF255FE96600A0E977 /* EditJournalsViewController.swift */,
+				41FAECF22559EB95001F7F3D /* InspirationViewController.swift */,
+			);
+			path = SettingsVCs;
+			sourceTree = "<group>";
+		};
+		B93F8116E1E25ECB2DE4C455 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4EA69252A8EF3388E0394C92 /* Pods_QuerenciaCloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ED76D0DCBD7914D5C5E7622B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DA77A2472B3A82634CF648BC /* Pods-QuerenciaCloudKit.debug.xcconfig */,
+				D315CB3656BFE475489BB20A /* Pods-QuerenciaCloudKit.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		41A2016525532EED00A5C36B /* QuerenciaCloudKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41A2017D25532EF300A5C36B /* Build configuration list for PBXNativeTarget "QuerenciaCloudKit" */;
+			buildPhases = (
+				BD47E40D633CB41778F82EA1 /* [CP] Check Pods Manifest.lock */,
+				41A2016225532EED00A5C36B /* Sources */,
+				41A2016325532EED00A5C36B /* Frameworks */,
+				41A2016425532EED00A5C36B /* Resources */,
+				79542E61DB2F85BAD8CF5F9A /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QuerenciaCloudKit;
+			productName = QuerenciaCloudKit;
+			productReference = 41A2016625532EED00A5C36B /* QuerenciaCloudKit.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		41A2015E25532EED00A5C36B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1210;
+				LastUpgradeCheck = 1210;
+				TargetAttributes = {
+					41A2016525532EED00A5C36B = {
+						CreatedOnToolsVersion = 12.1;
+					};
+				};
+			};
+			buildConfigurationList = 41A2016125532EED00A5C36B /* Build configuration list for PBXProject "QuerenciaCloudKit" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 41A2015D25532EED00A5C36B;
+			productRefGroup = 41A2016725532EED00A5C36B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				41A2016525532EED00A5C36B /* QuerenciaCloudKit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		41A2016425532EED00A5C36B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41A2017925532EF300A5C36B /* LaunchScreen.storyboard in Resources */,
+				41FBC7C5255B00B700FFAE45 /* JournalResponseViewController.xib in Resources */,
+				41A2017625532EF300A5C36B /* Assets.xcassets in Resources */,
+				41D8A11225628A3100A10800 /* NotificationsVC.xib in Resources */,
+				41D8A11425628A3100A10800 /* AboutVC.xib in Resources */,
+				41A2017125532EED00A5C36B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		79542E61DB2F85BAD8CF5F9A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QuerenciaCloudKit/Pods-QuerenciaCloudKit-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QuerenciaCloudKit/Pods-QuerenciaCloudKit-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QuerenciaCloudKit/Pods-QuerenciaCloudKit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD47E40D633CB41778F82EA1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QuerenciaCloudKit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		41A2016225532EED00A5C36B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41FAECD22559EA73001F7F3D /* BooksTableViewCell.swift in Sources */,
+				41A2016A25532EED00A5C36B /* AppDelegate.swift in Sources */,
+				41C347D725629B3A00158B05 /* PromptsTableViewCell.swift in Sources */,
+				41FAECBA2559E8D3001F7F3D /* ResourceModel.swift in Sources */,
+				41D8A10A25628A0200A10800 /* LocalNotificationManager.swift in Sources */,
+				41C6F487255CAC910051CA65 /* PublicCoreDataManager.swift in Sources */,
+				41FAECF32559EB95001F7F3D /* InspirationViewController.swift in Sources */,
+				41D8A104256183D500A10800 /* TopTagTableViewCell.swift in Sources */,
+				415C3100255FE96600A0E977 /* EditJournalsViewController.swift in Sources */,
+				41FAECF02559EB83001F7F3D /* EditPromptsViewController.swift in Sources */,
+				41D8A1012561635A00A10800 /* PromptsReview.swift in Sources */,
+				4131DAED255D06E50027C7C1 /* AllResourcesViewController.swift in Sources */,
+				41FAECDB2559EAFA001F7F3D /* WhatsNewKitViewController.swift in Sources */,
+				41FAECCC2559EA46001F7F3D /* JournalReviewTableViewCell.swift in Sources */,
+				41FAECE72559EB46001F7F3D /* SettingsViewController.swift in Sources */,
+				41D8A11325628A3100A10800 /* AboutVC.swift in Sources */,
+				41FAECB32559E88E001F7F3D /* JournalModel.swift in Sources */,
+				4104CAFF25601DB10081E268 /* QuestionsTableViewCell.swift in Sources */,
+				41FAECE42559EB39001F7F3D /* ResourcesViewController.swift in Sources */,
+				41FAECD52559EA89001F7F3D /* SettingsTableViewCell.swift in Sources */,
+				41FAECC12559E952001F7F3D /* Extensions.swift in Sources */,
+				41FAECCF2559EA68001F7F3D /* ResourceTableViewCell.swift in Sources */,
+				41A2017425532EED00A5C36B /* QuerenciaCloudKit.xcdatamodeld in Sources */,
+				41FAECBE2559E8E1001F7F3D /* ResourcesChoice.swift in Sources */,
+				41FAECD82559EAEC001F7F3D /* AuthenticateViewController.swift in Sources */,
+				417E7333255D0F53002E0F5B /* ResourceModel.xcdatamodeld in Sources */,
+				41FAECB72559E8A3001F7F3D /* CoreDataManager.swift in Sources */,
+				41FBC7BD255ADCE500FFAE45 /* SmileyCollectionViewCell.swift in Sources */,
+				41FAECE12559EB24001F7F3D /* CalendarReviewViewController.swift in Sources */,
+				41D8A10B25628A0200A10800 /* LocalNotification.swift in Sources */,
+				41D8A11125628A3100A10800 /* NotificationsVC.swift in Sources */,
+				415C3103255FEAC500A0E977 /* JournalNameTableViewCell.swift in Sources */,
+				41260761255E91B100694138 /* RatingSwitch.swift in Sources */,
+				41656574255EA2D8004F4996 /* ReviewJournalViewController.swift in Sources */,
+				41FBC7C4255B00B700FFAE45 /* JournalResponseViewController.swift in Sources */,
+				41FAECC82559EA06001F7F3D /* TagsCollectionViewCell.swift in Sources */,
+				41FBC7C9255B6A4600FFAE45 /* ResponseModel.swift in Sources */,
+				41A2016C25532EED00A5C36B /* SceneDelegate.swift in Sources */,
+				41C6F48A255CB1190051CA65 /* AddingResourcesViewController.swift in Sources */,
+				41FAECDE2559EB10001F7F3D /* DayViewController.swift in Sources */,
+				41FBC7C0255AE17400FFAE45 /* SectionTitlesCollectionReusableView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		41A2016F25532EED00A5C36B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				41A2017025532EED00A5C36B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		41A2017725532EF300A5C36B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				41A2017825532EF300A5C36B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		41A2017B25532EF300A5C36B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		41A2017C25532EF300A5C36B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		41A2017E25532EF300A5C36B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA77A2472B3A82634CF648BC /* Pods-QuerenciaCloudKit.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6K8BWF3CZ2;
+				INFOPLIST_FILE = QuerenciaCloudKit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.MousaAlwaraki.QuerenciaCloudKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		41A2017F25532EF300A5C36B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D315CB3656BFE475489BB20A /* Pods-QuerenciaCloudKit.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6K8BWF3CZ2;
+				INFOPLIST_FILE = QuerenciaCloudKit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.MousaAlwaraki.QuerenciaCloudKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		41A2016125532EED00A5C36B /* Build configuration list for PBXProject "QuerenciaCloudKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41A2017B25532EF300A5C36B /* Debug */,
+				41A2017C25532EF300A5C36B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		41A2017D25532EF300A5C36B /* Build configuration list for PBXNativeTarget "QuerenciaCloudKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41A2017E25532EF300A5C36B /* Debug */,
+				41A2017F25532EF300A5C36B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		417E7331255D0F53002E0F5B /* ResourceModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				417E7332255D0F53002E0F5B /* ResourceModel.xcdatamodel */,
+			);
+			currentVersion = 417E7332255D0F53002E0F5B /* ResourceModel.xcdatamodel */;
+			path = ResourceModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		41A2017225532EED00A5C36B /* QuerenciaCloudKit.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				41A2017325532EED00A5C36B /* QuerenciaCloudKit.xcdatamodel */,
+			);
+			currentVersion = 41A2017325532EED00A5C36B /* QuerenciaCloudKit.xcdatamodel */;
+			path = QuerenciaCloudKit.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 41A2015E25532EED00A5C36B /* Project object */;
+}
