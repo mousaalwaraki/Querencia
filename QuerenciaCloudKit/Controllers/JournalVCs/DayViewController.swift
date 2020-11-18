@@ -105,7 +105,9 @@ class DayViewController: UIViewController {
         if quotes.count == 0 {
             PublicCoreDataManager().load("MotivationalQuotes") { [self] (returnedArray: [NSManagedObject]) in
                 quotes = returnedArray as? [MotivationalQuotes] ?? []
+//                setMotivationalQuote()
             }
+            return
         }
         let randomQuote = Int(arc4random_uniform(UInt32(quotes.count)))
         quoteText.text = quotes[randomQuote].quote

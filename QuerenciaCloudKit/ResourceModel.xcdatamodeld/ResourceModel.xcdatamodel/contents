@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AllPrompts" representedClassName="AllPrompts" syncable="YES" codeGenerationType="class">
-        <attribute name="allPrompts" optional="YES" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="allPrompts" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[String]"/>
     </entity>
     <entity name="AllResources" representedClassName="AllResources" syncable="YES" codeGenerationType="class">
         <attribute name="actionUrl" optional="YES" attributeType="String"/>
@@ -22,9 +22,9 @@
         <attribute name="quote" optional="YES" attributeType="String"/>
     </entity>
     <elements>
+        <element name="AllPrompts" positionX="18" positionY="90" width="128" height="44"/>
         <element name="AllResources" positionX="-36" positionY="9" width="128" height="118"/>
         <element name="CurrentResources" positionX="0" positionY="45" width="128" height="133"/>
         <element name="MotivationalQuotes" positionX="27" positionY="72" width="128" height="58"/>
-        <element name="AllPrompts" positionX="18" positionY="90" width="128" height="58"/>
     </elements>
 </model>
