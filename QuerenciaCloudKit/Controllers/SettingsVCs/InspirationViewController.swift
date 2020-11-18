@@ -54,7 +54,9 @@ class InspirationViewController: UIViewController, UITableViewDelegate, UITableV
         
         PublicCoreDataManager().load("AllPrompts") { [self] (returnedArray: [NSManagedObject]) in
             let allOnlinePrompts = returnedArray as? [AllPrompts]
-            allPrompts = allOnlinePrompts![0].allPrompts!
+            if allOnlinePrompts?.count != 0 {
+                allPrompts = allOnlinePrompts?[0].allPrompts ?? []
+            } else { allPrompts = [] }
         }
         
         CoreDataManager().load("UserJournals") { [self] (returnedArray: [NSManagedObject]) in
