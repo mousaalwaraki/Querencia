@@ -31,6 +31,7 @@
 		41D8A11225628A3100A10800 /* NotificationsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41D8A10E25628A3100A10800 /* NotificationsVC.xib */; };
 		41D8A11325628A3100A10800 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8A10F25628A3100A10800 /* AboutVC.swift */; };
 		41D8A11425628A3100A10800 /* AboutVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41D8A11025628A3100A10800 /* AboutVC.xib */; };
+		41DAA2A62566684400D9A928 /* ActivitiesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DAA2A52566684400D9A928 /* ActivitiesCollectionViewCell.swift */; };
 		41FAECB32559E88E001F7F3D /* JournalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FAECB22559E88E001F7F3D /* JournalModel.swift */; };
 		41FAECB72559E8A3001F7F3D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FAECB62559E8A3001F7F3D /* CoreDataManager.swift */; };
 		41FAECBA2559E8D3001F7F3D /* ResourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FAECB92559E8D3001F7F3D /* ResourceModel.swift */; };
@@ -84,6 +85,7 @@
 		41D8A10E25628A3100A10800 /* NotificationsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsVC.xib; sourceTree = "<group>"; };
 		41D8A10F25628A3100A10800 /* AboutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		41D8A11025628A3100A10800 /* AboutVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutVC.xib; sourceTree = "<group>"; };
+		41DAA2A52566684400D9A928 /* ActivitiesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesCollectionViewCell.swift; sourceTree = "<group>"; };
 		41FAECB22559E88E001F7F3D /* JournalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalModel.swift; sourceTree = "<group>"; };
 		41FAECB62559E8A3001F7F3D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		41FAECB92559E8D3001F7F3D /* ResourceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceModel.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				41FAECC72559EA06001F7F3D /* TagsCollectionViewCell.swift */,
+				41DAA2A52566684400D9A928 /* ActivitiesCollectionViewCell.swift */,
 				41FAECCB2559EA46001F7F3D /* JournalReviewTableViewCell.swift */,
 				41FAECCE2559EA68001F7F3D /* ResourceTableViewCell.swift */,
 				41C347D625629B3A00158B05 /* PromptsTableViewCell.swift */,
@@ -442,6 +445,7 @@
 				41FBC7C9255B6A4600FFAE45 /* ResponseModel.swift in Sources */,
 				41A2016C25532EED00A5C36B /* SceneDelegate.swift in Sources */,
 				41C6F48A255CB1190051CA65 /* AddingResourcesViewController.swift in Sources */,
+				41DAA2A62566684400D9A928 /* ActivitiesCollectionViewCell.swift in Sources */,
 				41FAECDE2559EB10001F7F3D /* DayViewController.swift in Sources */,
 				41FBC7C0255AE17400FFAE45 /* SectionTitlesCollectionReusableView.swift in Sources */,
 			);

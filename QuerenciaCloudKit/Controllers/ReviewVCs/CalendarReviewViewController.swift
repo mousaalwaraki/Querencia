@@ -30,7 +30,8 @@ class CalendarReviewViewController: UIViewController, FSCalendarDelegate {
     
     @IBOutlet weak var tagsTagCollectionContainingView: UIView!
     @IBOutlet weak var horizontalBarChart: HorizontalBarChartView!
-    @IBOutlet weak var tagsTagChoicesCollection: UICollectionView!
+    @IBOutlet weak var activitiesCollectionView: UICollectionView!
+    
     
     var heightConstraintDatePicker: NSLayoutConstraint!
     var allDays : [String] = []
@@ -51,6 +52,7 @@ class CalendarReviewViewController: UIViewController, FSCalendarDelegate {
     var repeatedTags = [String]()
     var array = [String]()
     var selected: Int?
+    var activitesTag = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,6 +87,13 @@ class CalendarReviewViewController: UIViewController, FSCalendarDelegate {
             for entry in entries ?? [] {
                 allDays.append(entry.date!)
             }
+            for entry in entries ?? [] {
+                for tag in tagsTag {
+                    if entry.dayTags?.contains(tag) == true && activitesTag.contains(tag) == false {
+                        activitesTag.append(tag)
+                    }
+                }
+            }
         }
     }
     
@@ -103,7 +112,7 @@ class CalendarReviewViewController: UIViewController, FSCalendarDelegate {
         moodCollectionView.alpha = 0
         
         horizontalBarChart.alpha = 0
-        tagsTagChoicesCollection.alpha = 0
+        activitiesCollectionView.alpha = 0
         tagsTagCollectionContainingView.alpha = 0
         
         tags.removeAll()
@@ -140,13 +149,13 @@ class CalendarReviewViewController: UIViewController, FSCalendarDelegate {
     
     func setUpTags() {
         horizontalBarChart.alpha = 1
-        tagsTagChoicesCollection.alpha = 1
+        activitiesCollectionView.alpha = 1
         tagsTagCollectionContainingView.alpha = 1
         
-        tagsTagChoicesCollection.reloadData()
+        activitiesCollectionView.reloadData()
         
-        tagsTagChoicesCollection.delegate = self
-        tagsTagChoicesCollection.dataSource = self
+        activitiesCollectionView.delegate = self
+        activitiesCollectionView.dataSource = self
         horizontalBarChart.delegate = self
         
         tagsTagCollectionContainingView.setCard()
@@ -328,6 +337,17 @@ class CalendarReviewViewController: UIViewController, FSCalendarDelegate {
         historyTagsCollectionView.reloadData()
     }
     
+    func runUpdateCells() {
+        for tag in 0...activitesTag.count - 1 {
+            let cell = activitiesCollectionView.dequeueReusableCell(withReuseIdentifier: "activityCell", for: IndexPath(item: tag, section: 0)) as! ActivitiesCollectionViewCell
+            if cell.activitiesLabel.text == chosenTag {
+                cell.backgroundColor = .whatsNewKitRed
+                cell.activitiesLabel.textColor = .whatsNewKitWhite
+                cell.layer.borderColor = UIColor.whatsNewKitBlack.cgColor
+            }
+        }
+    }
+    
     func setCollectionViewCell() {
         let cellSize = CGSize(width:(self.view.frame.width/5) - 13 , height:40)
         let layout = UICollectionViewFlowLayout()
@@ -364,7 +384,7 @@ extension CalendarReviewViewController: UICollectionViewDelegate, UICollectionVi
             
             headerView?.tintColor = .secondarySystemBackground
             
-            if collectionView == tagsTagChoicesCollection {
+            if collectionView == activitiesCollectionView {
                 label?.text = "Pick an activity to filter by"
             } else {
                 label?.text = "Rest of activities (in ascending order)"
@@ -383,8 +403,8 @@ extension CalendarReviewViewController: UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == historyTagsCollectionView {
             return tags.count
-        } else if collectionView == tagsTagChoicesCollection {
-            return tagsTag.count
+        } else if collectionView == activitiesCollectionView {
+            return activitesTag.count
         } else if collectionView == moodCollectionView {
             return smileys.count
         } else {
@@ -404,23 +424,19 @@ extension CalendarReviewViewController: UICollectionViewDelegate, UICollectionVi
             cell.layer.cornerRadius = 8
             
             return cell
-        } else if collectionView == tagsTagChoicesCollection {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tagCell", for: indexPath) as! TagsCollectionViewCell
-            cell.tagLabel.text = tagsTag[indexPath.row]
+        } else if collectionView == activitiesCollectionView {
+            let cell = activitiesCollectionView.dequeueReusableCell(withReuseIdentifier: "activityCell", for: indexPath) as! ActivitiesCollectionViewCell
+            cell.activitiesLabel.text = activitesTag[indexPath.row]
             cell.layer.borderWidth = 0.5
             cell.layer.cornerRadius = 8
-            
-            if chosenTag == tagsTag[indexPath.row] {
+            cell.backgroundColor = .clear
+            cell.layer.borderColor = UIColor.whatsNewKitRed.cgColor
+            cell.activitiesLabel.textColor = .whatsNewKitRed
+            if chosenTag == activitesTag[indexPath.row] {
                 cell.backgroundColor = .whatsNewKitRed
-                cell.tagLabel.textColor = .whatsNewKitWhite
+                cell.activitiesLabel.textColor = .whatsNewKitWhite
                 cell.layer.borderColor = UIColor.whatsNewKitBlack.cgColor
-                cell.layoutIfNeeded()
-                cell.layoutSubviews()
-                cell.layoutIfNeeded()
-            } else {
-                cell.backgroundColor = .clear
-                cell.layer.borderColor = UIColor.whatsNewKitRed.cgColor
-                cell.tagLabel.textColor = .whatsNewKitRed
+                activitiesCollectionView.reloadData()
             }
             return cell
         } else  if collectionView == moodCollectionView {
@@ -472,22 +488,19 @@ extension CalendarReviewViewController: UICollectionViewDelegate, UICollectionVi
                 }
                 getPrompts()
             }
-        } else if collectionView == tagsTagChoicesCollection {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tagCell", for: indexPath) as! TagsCollectionViewCell
-            if cell.tagLabel.textColor == .whatsNewKitRed  {
-                chosenTag = tagsTag[indexPath.row]
-                cell.tagLabel.textColor = .whatsNewKitWhite
+        } else if collectionView == activitiesCollectionView {
+            let cell = activitiesCollectionView.dequeueReusableCell(withReuseIdentifier: "activityCell", for: indexPath) as! ActivitiesCollectionViewCell
+            if cell.activitiesLabel.text != chosenTag {
+                chosenTag = activitesTag[indexPath.row]
+                cell.activitiesLabel.textColor = .whatsNewKitWhite
                 cell.backgroundColor = .whatsNewKitRed
                 cell.layer.borderColor = UIColor.whatsNewKitBlack.cgColor
-                cell.layoutIfNeeded()
-                cell.layoutSubviews()
-                cell.layoutIfNeeded()
-                let tagToMove = tagsTag[indexPath.row]
-                tagsTag.remove(at: indexPath.row)
-                tagsTag.insert(tagToMove, at: 0)
+                let tagToMove = activitesTag[indexPath.row]
+                activitesTag.remove(at: indexPath.row)
+                activitesTag.insert(tagToMove, at: 0)
                 let tagsIndexPath = IndexPath(item: 0, section: 0)
-                tagsTagChoicesCollection.moveItem(at: indexPath, to: tagsIndexPath)
-                tagsTagChoicesCollection.reloadData()
+                activitiesCollectionView.moveItem(at: indexPath, to: tagsIndexPath)
+                activitiesCollectionView.reloadData()
             }
             
             setUpBarChart()
