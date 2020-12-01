@@ -10,7 +10,7 @@ import FSCalendar
 import CoreData
 import Charts
 
-class CalendarReviewViewController: UIViewController, FSCalendarDelegate {
+class CalendarReviewViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource {
 
     @IBOutlet weak var historyTagsCollectionView: UICollectionView!
     @IBOutlet weak var viewForBackground: UIView!
@@ -66,7 +66,7 @@ class CalendarReviewViewController: UIViewController, FSCalendarDelegate {
             let allTags = returnedArray[0] as! UserTags
             tagsTag = allTags.allTags ?? []
         }
-        
+        datePicker.preferredDatePickerStyle = .wheels
         styleSegmentedControl()
         removeAllSetup()
         heightConstraintDatePicker = NSLayoutConstraint(item: datePicker!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 0)
@@ -173,12 +173,13 @@ class CalendarReviewViewController: UIViewController, FSCalendarDelegate {
         heightConstraintDatePicker.isActive = true
         
         calendar.delegate = self
+        calendar.dataSource = self
         historyTagsCollectionView.delegate = self
         historyTagsCollectionView.dataSource = self
         
         getTodaysDate()
         getResults(at: combinedCurrentDate!)
-        
+        calendar.reloadData()
         pickedCombinedCurrentDate = combinedCurrentDate!
     }
     
@@ -372,7 +373,16 @@ class CalendarReviewViewController: UIViewController, FSCalendarDelegate {
             topTagsCollectiionView.alpha = CGFloat(alpha)
         }
     }
-}
+    
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d.M.YYYY"
+        let dateString = formatter.string(from: date)
+        if allDays.contains(dateString) {
+            return 1
+        }
+        return 0
+    }}
 
 extension CalendarReviewViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -489,7 +499,7 @@ extension CalendarReviewViewController: UICollectionViewDelegate, UICollectionVi
                 getPrompts()
             }
         } else if collectionView == activitiesCollectionView {
-            let cell = activitiesCollectionView.dequeueReusableCell(withReuseIdentifier: "activityCell", for: indexPath) as! ActivitiesCollectionViewCell
+            let cell = activitiesCollectionView.cellForItem(at: indexPath) as! ActivitiesCollectionViewCell
             if cell.activitiesLabel.text != chosenTag {
                 chosenTag = activitesTag[indexPath.row]
                 cell.activitiesLabel.textColor = .whatsNewKitWhite
@@ -519,16 +529,6 @@ extension CalendarReviewViewController {
         pickedCombinedCurrentDate = formatter.string(from: pickedCombinedDate)
         getResults(at: pickedCombinedCurrentDate)
         datePicker.setDate(date, animated: false)
-    }
-    
-    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "d.M.YYYY"
-        let dateString = formatter.string(from: date)
-        if allDays.contains(dateString) {
-            return 1
-        }
-        return 0
     }
     
     func getTodaysDate() {

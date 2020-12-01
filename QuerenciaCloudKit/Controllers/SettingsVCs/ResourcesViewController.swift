@@ -13,7 +13,7 @@ class ResourcesViewController: UIViewController {
 
     @IBOutlet weak var newsTable: UITableView!
     var allTypeButton = UIButton(type: UIButton.ButtonType.system)
-    var currentResources : [CurrentResources] = []
+    var resources : [Resource] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,9 +21,14 @@ class ResourcesViewController: UIViewController {
         newsTable.delegate = self
         newsTable.dataSource = self
         
-        PublicCoreDataManager().load("CurrentResources") { [self] (returnedArray: [NSManagedObject]) in
-            currentResources = returnedArray as! [CurrentResources]
-            newsTable.reloadData()
+        PublicCoreDataManager().loadPublic("Resource") { [self] (records) in
+            resources.removeAll()
+            for record in records {
+                resources.append(Resource(record: record))
+            }
+            DispatchQueue.main.async {
+                newsTable.reloadData()
+            }
         }
     }
 
@@ -42,7 +47,7 @@ extension ResourcesViewController: UITableViewDelegate, UITableViewDataSource {
         let category = Category.allCases[section]
         
         if category != .book {
-            return currentResources.filter({Category(rawValue: $0.category ?? "") == Category.allCases[section]}).count
+            return resources.filter({Category(rawValue: $0.category ) == Category.allCases[section]}).count
         } else {
             return 1
         }
@@ -92,30 +97,31 @@ extension ResourcesViewController: UITableViewDelegate, UITableViewDataSource {
         
         if Category.allCases[indexPath.section] == .book {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "BooksCell") as? BooksTableViewCell)!
-            cell.books = currentResources.filter({Category(rawValue: $0.category ?? "") == .book})
+            cell.books = resources.filter({Category(rawValue: $0.category ) == .book})
             cell.collectionView.reloadData()
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell") as? ResourceTableViewCell
-//            return resources.filter({$0.category == Category.allCases[section]}).count
-            let resource = currentResources.filter({Category(rawValue: $0.category ?? "") == Category.allCases[indexPath.section]})[indexPath.row]
+            let resource = resources.filter({Category(rawValue: $0.category ) == Category.allCases[indexPath.section]})[indexPath.row]
             
             cell?.titleLabel.text = resource.title
             cell?.descriptionLabel.text = resource.subtitle
-            if let imageUrlString = resource.imageUrl, let imageUrl = URL(string: imageUrlString) {
-                cell?.headerImageView.hnk_setImageFromURL(imageUrl)
-            }
+            let imageUrlString = resource.imageUrl
+            let imageUrl = URL(string: imageUrlString)
+            cell?.headerImageView.hnk_setImageFromURL(imageUrl!)
+            
             return cell!
         }
         
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let resource = currentResources.filter({Category(rawValue: $0.category ?? "") == Category.allCases[indexPath.section]})[indexPath.row]
+        let resource = resources.filter({Category(rawValue: $0.category ) == Category.allCases[indexPath.section]})[indexPath.row]
         
-        if let resourceUrlString = resource.actionUrl, let resourceUrl = URL(string: resourceUrlString) {
-            present(SFSafariViewController(url: resourceUrl), animated: true)
-        }
+        let resourceUrlString = resource.actionUrl
+        let resourceUrl = URL(string: resourceUrlString)
+        present(SFSafariViewController(url: resourceUrl!), animated: true)
+        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

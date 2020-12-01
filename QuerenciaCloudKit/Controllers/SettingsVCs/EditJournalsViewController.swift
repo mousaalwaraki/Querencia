@@ -14,7 +14,6 @@ class EditJournalsViewController: UIViewController, UITextFieldDelegate {
     
     var renameTextField:UITextField = UITextField(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
     var journals = [UserJournals]()
-    var newJournal: UserJournals?
     var oldName: String = ""
     var newName: String?
     var numberInArray: Int?
@@ -41,6 +40,7 @@ class EditJournalsViewController: UIViewController, UITextFieldDelegate {
     override func viewDidDisappear(_ animated: Bool) {
         journals.removeAll()
     }
+    
     func configurationTextField(text: UITextField!) {
         if text != nil {
             self.renameTextField = text!
@@ -49,13 +49,19 @@ class EditJournalsViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func addJournal() {
-        CoreDataManager().saveUserJournals("", "\(journals.count + 1)", [])
-        newJournal?.title = "Journal\(journals.count + 1)"
-        newJournal?.userTitle = ""
-        newJournal?.questions = []
-        journals.append(newJournal!)
-        journalsTable.reloadData()
-        journalsTable.scrollToRow(at: IndexPath.init(row: journals.count - 1, section: 0), at: .bottom, animated: true)
+        let alert = UIAlertController(title: "Add Journal", message: "What would you like to name your journal?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { [self] _ in
+            let newTitle = alert.textFields?[0].text ?? ""
+            CoreDataManager().saveUserJournals(newTitle, "\(journals.count + 1)", [])
+            CoreDataManager().load("UserJournals") { [self] (returnedArray: [NSManagedObject]) in
+                journals = returnedArray as? [UserJournals] ?? []
+            }
+            journalsTable.reloadData()
+            journalsTable.scrollToRow(at: IndexPath.init(row: journals.count - 1, section: 0), at: .bottom, animated: true)
+            }))
+        alert.addTextField(configurationHandler: nil)
+        present(alert, animated: true)
     }
 }
 
@@ -81,9 +87,7 @@ extension EditJournalsViewController: UITableViewDelegate, UITableViewDataSource
         alert.addAction(UIAlertAction(title: "Edit Questions", style: .default, handler: { [self] _ in
             let vc = storyboard?.instantiateViewController(identifier: "EditPromptsViewController") as? EditPromptsViewController
             vc?.chosenJournal = journals[indexPath.row]
-//            navigationItem.rightBarButtonItems?.removeAll()
             navigationController?.pushViewController(vc!, animated: true)
-//            present(vc!, animated: true)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(alert, animated: true)
@@ -93,7 +97,7 @@ extension EditJournalsViewController: UITableViewDelegate, UITableViewDataSource
         if editingStyle == .delete {
             let alert = UIAlertController(title: "Delete Journal", message: "Are you sure you want to delete \(journals[indexPath.row].userTitle ?? "")", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-            alert.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { [self] _ in
+            alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { [self] _ in
                 CoreDataManager().deleteUserJournal(journals[indexPath.row].title!)
                 journals.remove(at: indexPath.row)
                 tableView.reloadData()
@@ -119,5 +123,9 @@ extension EditJournalsViewController: UITableViewDelegate, UITableViewDataSource
         }))
         alert.addTextField(configurationHandler: configurationTextField(text: ))
         present(alert, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 65.0
     }
 }

@@ -26,10 +26,10 @@ class DayViewController: UIViewController {
     var journalEntry: UserResponses?
     var combinedCurrentDate = ""
     var moodSelected: Int16?
-    var quotes = [MotivationalQuotes]()
+    var quotes = [String]()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
         
         getTodaysDate()
         
@@ -56,6 +56,7 @@ class DayViewController: UIViewController {
                         allTags.insert(tag, at: 0)
                     }
                 }
+                tagsCollectionView.reloadData()
             }
         }
         
@@ -63,11 +64,13 @@ class DayViewController: UIViewController {
             if returnedArray.count == 0 {
                 setJournals()
             } else {
+                journals.removeAll()
                 let savedJournals = returnedArray as! [UserJournals]
                 for journal in savedJournals {
                     let userTitle = journal.userTitle
                     let title = journal.title
                     let questions = journal.questions
+                    if questions?.count == 0 { return }
                     journals.append(JournalModel(userTitle: userTitle, title: title, questions: questions))
                 }
             }
@@ -87,6 +90,8 @@ class DayViewController: UIViewController {
         bgCollectionView.setCard()
     }
     
+    
+    
     @IBAction func journalButtonTapped(_ sender: Any) {
         let alert = UIAlertController(title: "Journal Choice", message: "Which of your journals would you like to write to today?", preferredStyle: .actionSheet)
         for journal in journals {
@@ -103,14 +108,10 @@ class DayViewController: UIViewController {
     
     func setMotivationalQuote() {
         if quotes.count == 0 {
-            PublicCoreDataManager().load("MotivationalQuotes") { [self] (returnedArray: [NSManagedObject]) in
-                quotes = returnedArray as? [MotivationalQuotes] ?? []
-//                setMotivationalQuote()
-            }
-            return
+            resetQuotes()
         }
         let randomQuote = Int(arc4random_uniform(UInt32(quotes.count)))
-        quoteText.text = quotes[randomQuote].quote
+        quoteText.text = quotes[randomQuote]
         quotes.remove(at: randomQuote)
     }
     
@@ -262,5 +263,9 @@ extension DayViewController {
                 journals.append(JournalModel(userTitle: userTitle, title: title, questions: questions))
             }
         }
+    }
+    
+    func resetQuotes() {
+        quotes = ["“There’s simply no better way to learn about your thought processes than to write them down.“ - Barbara Markway", "“Journal writing is a voyage to the interior.“ - Christina Baldwin","“The habit of writing for my eye is good practice. It loosens the ligaments.“ - Virginia Woolf", "“This pouring thoughts out on paper has relieved me. I feel better and full of confidence and resolution.“ - Diet Eman", "“Journal writing gives us insights into who we are, who we were, and who we can become.“ - Sandra Marinella", "“When I look back on my personal story through my journals, it struck me my words had an unmatched power to heal me. To change me.“ - Sandra Marinella","“You must remember that your story matters. What you write has the power to save a life, sometimes that life is your own.“ - Stalina Goodwin","“Journaling can be an excellent way to increase self-awareness, discover and change habits.“ - Akiroq Brost", "“Documenting little details of your everyday life becomes a celebration of who you are.“ - Carolyn V. Hamilton", "“These empty pages are your future, soon to become your past. T will read the most personal tale you shall ever find in a book.“ - Anon","“He captures memories because if he forgets them, it's as though they didn't happen.“ - Donald Miller", "“Successful journals break the deadlock of introspective obsession.“ - Alexandra Johnson","“The pages afforded glimpses into my soul where I'd hidden it, behind masks of paper and ink.“ - Rachel Schade","“I journal my joy, and my joy expands exponentially forevermore. So be it.“ - Amy Mercree","“Writing is the only way I have to explain my own life to myself.“ - Pat Conroy", "“Journaling is like whispering to one’s self and listening at the same time.“ - Mina Murray", "“People who keep journals have life twice.“ - Jessamyn West","“Keeping a journal of what’s going on in your life is a good way to help you distill what’s important and what’s not.“ - Martina Navratilova","“In the journal I do not just express myself more openly than I could to any person; I create myself.“ - Susan Sontag","“I can shake off everything as I write; my sorrows disappear, my courage is reborn.“ - Anne Frank","“Journal writing, when it becomes a ritual for transformation, is not only life-changing but life-expanding.“ - Jen Williamson","“I love my journal as much as I love my phone. I find it to be a big part of my self-care to reflect on my day and write words that inspire me.“ - Franchesca Ramsey","“Journaling is paying attention to the inside for the purpose of living well from the inside out.“ - Lee Wise","“A journal is your completely unaltered voice.“ - Lucy Dacus","“As there are a thousand thoughts lying within a man that he does not know till he takes up the pen to write.“ - William Thackeray","“When I look back on my personal story through my journals, it struck me my words had an unmatched power to heal me. To change me.“ - Sandra Marinella","“Journal writing gives us insights into who we are, who we were, and who we can become.“ - Sandra Marinella"]
     }
 }

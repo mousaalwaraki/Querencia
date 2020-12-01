@@ -29,7 +29,9 @@ class QuestionsTableViewCell: UITableViewCell, UITextViewDelegate {
         // Configure the view for the selected state
     }
 
-    func textViewDidChange(_ textView: UITextView) {
+   
+    
+    func textViewDidChangeSelection(_ textView: UITextView) {
         delegate?.updateArray(cell: self)
     }
 }

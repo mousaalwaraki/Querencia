@@ -24,7 +24,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sections.append(("Configuration", [.password, .editJournals, .notifications, .addResources]))
+        sections.append(("Configuration", [.password, .editJournals, .notifications, .editTags]))
         sections.append(("Privacy", [.terms, .mission]))
         sections.append(("Spread the love", [.contact, .share, .suggestFeature]))
         
@@ -112,8 +112,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func editTags() {
-        
-    }
+        let vc = storyboard?.instantiateViewController(identifier: "EditActivityViewController")
+        navigationController?.pushViewController(vc!, animated: true)    }
     
     func presentEditJournals() {
         let vc = storyboard?.instantiateViewController(identifier: "EditJournalsViewController")
@@ -264,7 +264,7 @@ extension SettingsItem {
         case .addResources:
             return "Add Resource"
         case .editTags:
-            return "Edit Tags"
+            return "Edit Activities"
         }
     }
     

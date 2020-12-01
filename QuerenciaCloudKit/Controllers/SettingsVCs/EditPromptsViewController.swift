@@ -47,6 +47,7 @@ class EditPromptsViewController: UIViewController, QuestionCellDelegate, UITextV
         var questionCell = questions[indexPath.row]
         questionCell = cell.questionsTextView.text
         questions[indexPath.row] = questionCell
+        CoreDataManager().updateUserJournalQuestions(journalTitle!, questions)
     }
     
     @IBAction func needInspoButtonTapped(_ sender: Any) {
@@ -75,6 +76,7 @@ extension EditPromptsViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             questions.remove(at: indexPath.row)
+            CoreDataManager().updateUserJournalQuestions(journalTitle!, questions)
             tableView.reloadData()
         }
     }

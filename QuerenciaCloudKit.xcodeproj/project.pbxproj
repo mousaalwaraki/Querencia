@@ -55,6 +55,10 @@
 		41FBC7C4255B00B700FFAE45 /* JournalResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FBC7C2255B00B700FFAE45 /* JournalResponseViewController.swift */; };
 		41FBC7C5255B00B700FFAE45 /* JournalResponseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41FBC7C3255B00B700FFAE45 /* JournalResponseViewController.xib */; };
 		41FBC7C9255B6A4600FFAE45 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FBC7C8255B6A4600FFAE45 /* ResponseModel.swift */; };
+		59C953E12572A6C800FFAE00 /* EditPromptsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C953E02572A6C800FFAE00 /* EditPromptsTableViewCell.swift */; };
+		59C953E42572A8CB00FFAE00 /* EditActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C953E32572A8CB00FFAE00 /* EditActivityViewController.swift */; };
+		59C953E72572CE4200FFAE00 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C953E62572CE4200FFAE00 /* Resource.swift */; };
+		59DB02C52573EB3D008BC434 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59DB02C42573EB3D008BC434 /* CloudKit.framework */; };
 		93914886D4B1D39B80794230 /* Pods_QuerenciaCloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EA69252A8EF3388E0394C92 /* Pods_QuerenciaCloudKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +114,11 @@
 		41FBC7C3255B00B700FFAE45 /* JournalResponseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JournalResponseViewController.xib; sourceTree = "<group>"; };
 		41FBC7C8255B6A4600FFAE45 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		4EA69252A8EF3388E0394C92 /* Pods_QuerenciaCloudKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuerenciaCloudKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59C953E02572A6C800FFAE00 /* EditPromptsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPromptsTableViewCell.swift; sourceTree = "<group>"; };
+		59C953E32572A8CB00FFAE00 /* EditActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditActivityViewController.swift; sourceTree = "<group>"; };
+		59C953E62572CE4200FFAE00 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		59DB02C22573EB36008BC434 /* QuerenciaCloudKit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuerenciaCloudKit.entitlements; sourceTree = "<group>"; };
+		59DB02C42573EB3D008BC434 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D315CB3656BFE475489BB20A /* Pods-QuerenciaCloudKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuerenciaCloudKit.release.xcconfig"; path = "Target Support Files/Pods-QuerenciaCloudKit/Pods-QuerenciaCloudKit.release.xcconfig"; sourceTree = "<group>"; };
 		DA77A2472B3A82634CF648BC /* Pods-QuerenciaCloudKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuerenciaCloudKit.debug.xcconfig"; path = "Target Support Files/Pods-QuerenciaCloudKit/Pods-QuerenciaCloudKit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93914886D4B1D39B80794230 /* Pods_QuerenciaCloudKit.framework in Frameworks */,
+				59DB02C52573EB3D008BC434 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +157,7 @@
 		41A2016825532EED00A5C36B /* QuerenciaCloudKit */ = {
 			isa = PBXGroup;
 			children = (
+				59DB02C22573EB36008BC434 /* QuerenciaCloudKit.entitlements */,
 				41A2017A25532EF300A5C36B /* Info.plist */,
 				41A2017225532EED00A5C36B /* QuerenciaCloudKit.xcdatamodeld */,
 				417E7331255D0F53002E0F5B /* ResourceModel.xcdatamodeld */,
@@ -189,6 +200,7 @@
 			children = (
 				41FAECC02559E952001F7F3D /* Extensions.swift */,
 				41260760255E91B100694138 /* RatingSwitch.swift */,
+				59C953E62572CE4200FFAE00 /* Resource.swift */,
 				41FAECBD2559E8E1001F7F3D /* ResourcesChoice.swift */,
 				41FAECB62559E8A3001F7F3D /* CoreDataManager.swift */,
 				41C6F486255CAC910051CA65 /* PublicCoreDataManager.swift */,
@@ -206,6 +218,7 @@
 				41C347D625629B3A00158B05 /* PromptsTableViewCell.swift */,
 				41D8A103256183D500A10800 /* TopTagTableViewCell.swift */,
 				415C3102255FEAC500A0E977 /* JournalNameTableViewCell.swift */,
+				59C953E02572A6C800FFAE00 /* EditPromptsTableViewCell.swift */,
 				4104CAFE25601DB10081E268 /* QuestionsTableViewCell.swift */,
 				41FBC7BF255AE17400FFAE45 /* SectionTitlesCollectionReusableView.swift */,
 				41FBC7BC255ADCE500FFAE45 /* SmileyCollectionViewCell.swift */,
@@ -263,6 +276,7 @@
 				41D8A11025628A3100A10800 /* AboutVC.xib */,
 				41D8A10D25628A3100A10800 /* NotificationsVC.swift */,
 				41D8A10E25628A3100A10800 /* NotificationsVC.xib */,
+				59C953E32572A8CB00FFAE00 /* EditActivityViewController.swift */,
 				41FAECE32559EB39001F7F3D /* ResourcesViewController.swift */,
 				4131DAEC255D06E50027C7C1 /* AllResourcesViewController.swift */,
 				41FAECEF2559EB83001F7F3D /* EditPromptsViewController.swift */,
@@ -275,6 +289,7 @@
 		B93F8116E1E25ECB2DE4C455 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				59DB02C42573EB3D008BC434 /* CloudKit.framework */,
 				4EA69252A8EF3388E0394C92 /* Pods_QuerenciaCloudKit.framework */,
 			);
 			name = Frameworks;
@@ -420,9 +435,11 @@
 				4131DAED255D06E50027C7C1 /* AllResourcesViewController.swift in Sources */,
 				41FAECDB2559EAFA001F7F3D /* WhatsNewKitViewController.swift in Sources */,
 				41FAECCC2559EA46001F7F3D /* JournalReviewTableViewCell.swift in Sources */,
+				59C953E12572A6C800FFAE00 /* EditPromptsTableViewCell.swift in Sources */,
 				41FAECE72559EB46001F7F3D /* SettingsViewController.swift in Sources */,
 				41D8A11325628A3100A10800 /* AboutVC.swift in Sources */,
 				41FAECB32559E88E001F7F3D /* JournalModel.swift in Sources */,
+				59C953E72572CE4200FFAE00 /* Resource.swift in Sources */,
 				4104CAFF25601DB10081E268 /* QuestionsTableViewCell.swift in Sources */,
 				41FAECE42559EB39001F7F3D /* ResourcesViewController.swift in Sources */,
 				41FAECD52559EA89001F7F3D /* SettingsTableViewCell.swift in Sources */,
@@ -435,6 +452,7 @@
 				41FAECB72559E8A3001F7F3D /* CoreDataManager.swift in Sources */,
 				41FBC7BD255ADCE500FFAE45 /* SmileyCollectionViewCell.swift in Sources */,
 				41FAECE12559EB24001F7F3D /* CalendarReviewViewController.swift in Sources */,
+				59C953E42572A8CB00FFAE00 /* EditActivityViewController.swift in Sources */,
 				41D8A10B25628A0200A10800 /* LocalNotification.swift in Sources */,
 				41D8A11125628A3100A10800 /* NotificationsVC.swift in Sources */,
 				415C3103255FEAC500A0E977 /* JournalNameTableViewCell.swift in Sources */,
@@ -595,14 +613,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = QuerenciaCloudKit/QuerenciaCloudKit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 6K8BWF3CZ2;
 				INFOPLIST_FILE = QuerenciaCloudKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.MousaAlwaraki.QuerenciaCloudKit;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MousaAlwaraki.Journal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -615,14 +636,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = QuerenciaCloudKit/QuerenciaCloudKit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 6K8BWF3CZ2;
 				INFOPLIST_FILE = QuerenciaCloudKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.MousaAlwaraki.QuerenciaCloudKit;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MousaAlwaraki.Journal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

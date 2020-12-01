@@ -43,15 +43,6 @@ class AddingResourcesViewController: UIViewController {
     }
     
     @IBAction func submitButtonTapped(_ sender: Any) {
-        if segmentedColor.selectedSegmentIndex == 0 {
-            PublicCoreDataManager().saveCurrent(titleFT.text!, subtitleFT.text!, actionFT.text!, imageFT.text!, categoryFT.text!, numberFT.text!)
-            PublicCoreDataManager().saveAll(titleFT.text!, subtitleFT.text!, actionFT.text!, imageFT.text!, categoryFT.text!)
-        } else if segmentedColor.selectedSegmentIndex == 1 {
-            PublicCoreDataManager().saveAll(titleFT.text!, subtitleFT.text!, actionFT.text!, imageFT.text!, categoryFT.text!)
-        } else if segmentedColor.selectedSegmentIndex == 2 {
-            PublicCoreDataManager().saveQuote(titleFT.text!)
-        } else {
-            PublicCoreDataManager().savePrompt(titleFT.text!)
-        }
+       
     }
 }

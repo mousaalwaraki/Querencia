@@ -31,8 +31,6 @@ class InspirationViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var promptAddedView: UIView!
     @IBOutlet weak var cycleCompletedView: UIView!
     
-    
-    var allPrompts: [String] = []
     var userPrompts: [String] = []
     var randomPrompts: [String] = []
     var number = 0
@@ -52,12 +50,7 @@ class InspirationViewController: UIViewController, UITableViewDelegate, UITableV
         cycleCompletedView.alpha = 0
         journalTitle = userjournal?.title
         
-        PublicCoreDataManager().load("AllPrompts") { [self] (returnedArray: [NSManagedObject]) in
-            let allOnlinePrompts = returnedArray as? [AllPrompts]
-            if allOnlinePrompts?.count != 0 {
-                allPrompts = allOnlinePrompts?[0].allPrompts ?? []
-            } else { allPrompts = [] }
-        }
+        
         
         CoreDataManager().load("UserJournals") { [self] (returnedArray: [NSManagedObject]) in
             let journals = returnedArray as? [UserJournals]
@@ -145,4 +138,5 @@ class InspirationViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
     }
+    var allPrompts = ["What is something I did today that I am proud of?", "If I could change anything about my day it would be... because...", "The weather outside my window right now is... and it's making me feel...", "What are some things I am grateful for today?", "What are some of my fears and why are they so scary?", "Dear me one year from now…", "Dear childhood friend…", "Relive a favorite childhood memory, what makes this stand out?",  "Dear teenage me…", "What is something I need to forgive myself for?", "What is something I need to forgive someone else for?", "What are some things I would love to start doing and why?", "What is something that is making me feel down lately? How can I change it?", "How can I be more positive during my day?", "I have never told anyone this before…", "I am thankful for these people in my life. What have they taught me?", "I am so glad I got to meet … because...", "Here are some things I love about my job…", "These are some nice things I have done for others lately…", "Here are some nice things others have done for me lately…", "Three emotions I am feeling right now and why…", "I feel great when I…", "These are some of my personal self-care moments…", "Happiness to me means…", "I am happiest when I am with…", "What are some short-term goals I would love to accomplish?", "The quote I'd like to reflect on today is... , it resonated with me because...", "What are some negative beliefs I have about myself sometimes? How are they untrue?", "What were some highlights of my day?", "How many meals have I eaten today, what did they consist of and how did they make me feel?", "Did I work out today? How has my mood cahnged after exercising?", "Did I experience any pain today? What caused it?", "Did I use my free time wisely?", "Did I cry today? Was it from joy or pain? How did my mood alter after?"]
 }

@@ -20,15 +20,16 @@ class AllResourcesViewController: UIViewController, UITableViewDelegate, UITable
         
         cell?.titleLabel.text = resource.title
         cell?.descriptionLabel.text = resource.subtitle
-        if let imageUrlString = resource.imageUrl, let imageUrl = URL(string: imageUrlString) {
-            cell?.headerImageView.hnk_setImageFromURL(imageUrl)
-        }
+        let imageUrlString = resource.imageUrl
+        let imageUrl = URL(string: imageUrlString)
+        cell?.headerImageView.hnk_setImageFromURL(imageUrl!)
+        
         return cell!
     }
     
 
     @IBOutlet weak var allResourceTable: UITableView!
-    var resources: [AllResources] = []
+    var resources: [Resource] = []
     var chosenChoice = ""
     
     override func viewDidLoad() {
@@ -40,16 +41,11 @@ class AllResourcesViewController: UIViewController, UITableViewDelegate, UITable
         title = resourceChoice!.getTitle()
         chosenChoice = resourceChoice!.getCase()
         
-        
-        
-        PublicCoreDataManager().load("AllResources") { [self] (returnedArray: [NSManagedObject]) in
-            let allResources = returnedArray as! [AllResources]
-            for resource in allResources {
-                if allResources.contains(where: {_ in (resource.category == chosenChoice)}) {
-                    resources.append(resource)
-                }
+        PublicCoreDataManager().loadPublic("Resource") { [self] (records) in
+            resources.removeAll()
+            for record in records {
+                resources.append(Resource(record: record))
             }
-            allResourceTable.reloadData()
         }
     }
 }

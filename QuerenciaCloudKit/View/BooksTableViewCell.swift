@@ -13,7 +13,7 @@ class BooksTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
     @IBOutlet weak var containingView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var books: [CurrentResources] = []
+    var books: [Resource] = []
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -30,7 +30,7 @@ class BooksTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BooksCollectionCell", for: indexPath) as! BooksCollectionViewCell
         let book = books[indexPath.item]
         
-        cell.bookCover.hnk_setImageFromURL(URL(string: book.imageUrl!)!)
+        cell.bookCover.hnk_setImageFromURL(URL(string: book.imageUrl)!)
         
         return cell
     }
@@ -40,10 +40,10 @@ class BooksTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let resourceUrlString = books[indexPath.row].actionUrl, let resourceUrl = URL(string: resourceUrlString) {
-            let vc = SFSafariViewController(url: resourceUrl)
-            UIApplication.shared.windows.first?.rootViewController?.present(vc, animated: true)
-        }
+        let resourceUrlString = books[indexPath.row].actionUrl
+        let resourceUrl = URL(string: resourceUrlString)
+        let vc = SFSafariViewController(url: resourceUrl!)
+        UIApplication.shared.windows.first?.rootViewController?.present(vc, animated: true)
     }
 }
 
