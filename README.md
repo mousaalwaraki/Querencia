@@ -1,4 +1,4 @@
-# Querencia-CloudKit
+# Querencia
  
  ## Screenshots
 
