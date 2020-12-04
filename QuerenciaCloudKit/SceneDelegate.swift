@@ -19,12 +19,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         
         window?.overrideUserInterfaceStyle = .light
-        if UserDefaults.standard.value(forKey: "FirstLaunch") == nil {
-            UserDefaults.standard.set(false, forKey: "FirstLaunch")
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "WhatsNewKitViewController")
-            window!.rootViewController =  vc
-        }
+//        if UserDefaults.standard.value(forKey: "FirstLaunch") == nil {
+//            UserDefaults.standard.set(false, forKey: "FirstLaunch")
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let vc = storyboard.instantiateViewController(withIdentifier: "WhatsNewKitViewController")
+//            window!.rootViewController =  vc
+//        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -44,7 +44,12 @@ class AllResourcesViewController: UIViewController, UITableViewDelegate, UITable
         PublicCoreDataManager().loadPublic("Resource") { [self] (records) in
             resources.removeAll()
             for record in records {
-                resources.append(Resource(record: record))
+                if Resource(record: record).category == chosenChoice {
+                    resources.append(Resource(record: record))
+                }
+            }
+            DispatchQueue.main.async {
+                allResourceTable.reloadData()
             }
         }
     }

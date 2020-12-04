@@ -23,7 +23,7 @@ class LocalNotificationManager: NSObject, UNUserNotificationCenterDelegate {
                 print(error.localizedDescription)
             } else {
                 if granted {
-                    self.scheduleNotifications()
+//                    self.scheduleNotifications()
                 }
             }
         }

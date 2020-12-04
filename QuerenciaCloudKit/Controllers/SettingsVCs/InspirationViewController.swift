@@ -34,7 +34,7 @@ class InspirationViewController: UIViewController, UITableViewDelegate, UITableV
     var userPrompts: [String] = []
     var randomPrompts: [String] = []
     var number = 0
-    var userjournal: UserJournals?
+    var userjournalTitle: String?
     var journalTitle: String?
     
     override func viewDidLoad() {
@@ -48,15 +48,13 @@ class InspirationViewController: UIViewController, UITableViewDelegate, UITableV
         promptsTableView.dataSource = self
         
         cycleCompletedView.alpha = 0
-        journalTitle = userjournal?.title
-        
-        
+        journalTitle = userjournalTitle
         
         CoreDataManager().load("UserJournals") { [self] (returnedArray: [NSManagedObject]) in
             let journals = returnedArray as? [UserJournals]
             if journals?.count == 0 { return }
             for journal in journals! {
-                if journal == userjournal {
+                if journal.title == userjournalTitle {
                     for question in journal.questions ?? [] {
                         userPrompts.append(question)
                     }
@@ -66,6 +64,7 @@ class InspirationViewController: UIViewController, UITableViewDelegate, UITableV
                     allPrompts.removeAll(where: {$0 == question})
             }
         }
+        randomPrompts = allPrompts
         promptsTableView.reloadData()
     }
     
@@ -78,16 +77,13 @@ class InspirationViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func addButtonTapped(_ sender: Any) {
-//        let docRef = db.collection("users").document(Auth.auth().currentUser!.uid)
-//        docRef.updateData(["questions": FieldValue.arrayUnion([self.randomPromptText.text!])])
-//
-//        let ref = db.collection("dailyEntries").document("\(Auth.auth().currentUser?.uid ?? "Something")-\(Date().simpleDate())")
-//        let dict = [self.randomPromptText.text!: ""]
-//        ref.updateData(["response": FieldValue.arrayUnion([dict])])
         
+        randomPrompts.removeAll(where: ({$0 == randomPromptText.text}))
+        allPrompts.removeAll(where: ({$0 == randomPromptText.text}))
         userPrompts.append(randomPromptText.text)
         
         promptAddedShow()
+        promptsTableView.reloadData()
     }
     
     @IBAction func randomButtonTapped(_ sender: Any) {
@@ -99,20 +95,18 @@ class InspirationViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func randomElement() {
-        randomPromptText.text = randomPrompts[number]
-        number += 1
+        randomPromptText.text = randomPrompts.randomElement()
+        randomPrompts.removeAll(where: ({$0 == randomPromptText.text}))
     }
     
     func randomize() {
-        if number < randomPrompts.count {
-            randomElement()
+        randomElement()
+        if randomPrompts.count != 0 {
             self.cycleCompletedView.alpha = 0
         } else {
-            number = 0
             for item in 0...allPrompts.count - 1 {
                 randomPrompts.append(allPrompts[item])
             }
-            randomElement()
             UIView.animate(withDuration: 0.3) {
                 self.cycleCompletedView.alpha = 1
             }

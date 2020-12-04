@@ -17,6 +17,7 @@ class DayViewController: UIViewController {
     @IBOutlet weak var journalButtonView: UIView!
     @IBOutlet weak var bgCollectionView: UIView!
     @IBOutlet weak var quoteText: UILabel!
+    @IBOutlet weak var reeflectMoreButton: UIButton!
     
     var allTags = ["Went on a run! 🏃‍♂️", "Ate healthy! 🥦🙆‍♀️", "Ate junk food 🍟😣", "Did some work 💻", "Spent some family time! 👨‍👩‍👧‍👧", "Spent too much time on my phone 📱", "Went on a cruise 🚘", "Spent time with my friends 👯‍♂️", "Played football ⚽️", "Meditated 🧘", "Went on a bike ride 🚴‍♂️", "Worked out! 🏋️‍♀️", "Did yoga 🤸‍♀️", "Went to the beach 🏝"]
     var selectedTags = [String]()
@@ -27,6 +28,17 @@ class DayViewController: UIViewController {
     var combinedCurrentDate = ""
     var moodSelected: Int16?
     var quotes = [String]()
+    
+    override func viewDidLoad() {
+        reeflectMoreButton.setTitleColor(.whatsNewKitRed, for: .normal)
+        LocalNotificationManager().requestPushNotificationsPermissions()
+        LocalNotificationManager().scheduleNotifications()
+        if #available(iOS 14, *) {
+            tabBarController?.tabBar.items?[1].image = UIImage(systemName: "chart.bar.doc.horizontal")
+        } else {
+            tabBarController?.tabBar.items?[1].image = UIImage(systemName: "doc.text.magnifyingglass")
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
@@ -42,6 +54,7 @@ class DayViewController: UIViewController {
                     moodSelected = entry.dayFeeling
                 }
             }
+            smileyCollectionView.reloadData()
         }
         
         CoreDataManager().load("UserTags") { [self] (returnedArray: [NSManagedObject]) in
@@ -71,11 +84,15 @@ class DayViewController: UIViewController {
                     let title = journal.title
                     let questions = journal.questions
                     if questions?.count == 0 { return }
+                    for userJournal in journals {
+                        if userJournal.title == title { return }
+                    }
                     journals.append(JournalModel(userTitle: userTitle, title: title, questions: questions))
                 }
             }
         }
         
+        journals.sort(by: ({$0.userTitle! < $1.userTitle!}))
         tagsCollectionView.delegate = self
         tagsCollectionView.dataSource = self
         smileyCollectionView.delegate = self
@@ -85,6 +102,7 @@ class DayViewController: UIViewController {
         setMotivationalQuote()
         
         motivationalQuoteCard.setCard()
+        tagsCollectionView.backgroundColor = .clear
         smileyView.setCard()
         journalButtonView.setCard()
         bgCollectionView.setCard()
@@ -103,6 +121,12 @@ class DayViewController: UIViewController {
             })
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            alert.popoverPresentationController?.sourceView = self.view
+            alert.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            alert.popoverPresentationController?.permittedArrowDirections = []
+            //            self.view.bounds.midX
+        }
         present(alert, animated: true)
     }
     
@@ -152,6 +176,7 @@ extension DayViewController: UICollectionViewDelegate, UICollectionViewDataSourc
             let headerView = sectionHeader.headerView
             
             headerView?.tintColor = .secondarySystemBackground
+            headerView?.backgroundColor = .clear
             
             label?.text = "Day Activities"
             label?.textColor = .secondaryLabel
@@ -196,11 +221,12 @@ extension DayViewController: UICollectionViewDelegate, UICollectionViewDataSourc
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "smileyCell", for: indexPath) as! SmileyCollectionViewCell
-            cell.smileyLabel.text = smileys[indexPath.row]
             if indexPath.row == Int(moodSelected ?? 100) {
                 cell.bgView.backgroundColor = .whatsNewKitRed
                 cell.bgView.layer.cornerRadius = cell.bgView.frame.width/2
-            }
+            } else { cell.bgView.backgroundColor = .clear }
+            cell.smileyLabel.text = smileys[indexPath.row]
+            
             return cell
         }
     }
@@ -212,13 +238,18 @@ extension DayViewController: UICollectionViewDelegate, UICollectionViewDataSourc
             if cell?.tagLabel.textColor == .whatsNewKitRed {
                 cell?.backgroundColor = .whatsNewKitRed
                 cell?.tagLabel.textColor = .whatsNewKitWhite
+                cell?.layer.borderColor = UIColor.whatsNewKitBlack.cgColor
                 selectedTags.append(cell?.tagLabel.text! ?? "")
                 
                 let tagToMove = allTags[tag]
                 allTags.remove(at: tag)
                 allTags.insert(tagToMove, at: 0)
-                let tagsIndexPath = IndexPath(row: 0, section: 0)
-                tagsCollectionView.moveItem(at: IndexPath(row: tag, section: 0), to: tagsIndexPath)
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    tagsCollectionView.reloadData()
+                } else {
+                    let tagsIndexPath = IndexPath(row: 0, section: 0)
+                    tagsCollectionView.moveItem(at: IndexPath(item: tag, section: 0), to: tagsIndexPath)
+                }
             } else {
                 cell?.backgroundColor = .clear
                 cell?.layer.borderColor = UIColor.whatsNewKitRed.cgColor
@@ -229,7 +260,7 @@ extension DayViewController: UICollectionViewDelegate, UICollectionViewDataSourc
                 allTags.remove(at: tag)
                 allTags.insert(tagToMove, at: selectedTags.count)
                 let tagsIndexPath = IndexPath(row: selectedTags.count, section: 0)
-                tagsCollectionView.moveItem(at: IndexPath(row: tag, section: 0), to: tagsIndexPath)
+                tagsCollectionView.moveItem(at: IndexPath(item: tag, section: 0), to: tagsIndexPath)
             }
             saveToCoreData()
         } else {
@@ -248,12 +279,12 @@ extension DayViewController: UICollectionViewDelegate, UICollectionViewDataSourc
 
 extension DayViewController {
     func setJournals() {
-        CoreDataManager().saveUserJournals("Open", "Journal1", ["Write down your thoughts on the day or simply too record what happened in your day!"])
-        CoreDataManager().saveUserJournals("Gratitude", "Journal2", ["Write about 1 person in your life that you are grateful for and why.", "What is a skill or ability you have that you are thankful for?", "What about you or your day do you not notice that you can be thankful for?"])
-        CoreDataManager().saveUserJournals("Reflection", "Journal3", ["Recall an event, a thought, or something about yourself that’s on your mind.", "Why do you think it happened and what did it mean to you?", "What can you learn from this? Any lessons that can be learnt?"])
-        CoreDataManager().saveUserJournals("Problem Solving", "Journal4", ["What is a problem you’ve been facing recently that you’d like to solve?", "Can you break down the problem to a deeper level?", "What are some simple steps you can do to tackle the root causes of the problem and help tackle it?"])
-        CoreDataManager().saveUserJournals("Goal Setting", "Journal5", ["Write down a goal you want to accomplish over the next year, make it specific and measurable.", "Why do you want to achieve it?", "What steps are necessary to achieve it?"])
-        CoreDataManager().saveUserJournals("My Journal", "Journal 6", ["Did I get angry today? Why?","What did I do wrong today?","What did I do right today?","What could I have done differently?","What made today great?", "What did I work on/learn today?", "Any extra thoughts on the day?"])
+        CoreDataManager().saveUserJournals("Open", "1", ["Write down your thoughts on the day or simply to record what happened in your day!"])
+        CoreDataManager().saveUserJournals("Gratitude", "2", ["Write about 1 person in your life that you are grateful for and why.", "What is a skill or ability you have that you are thankful for?", "What about you or your day do you not notice that you can be thankful for?"])
+        CoreDataManager().saveUserJournals("Reflection", "3", ["Recall an event, a thought, or something about yourself that’s on your mind.", "Why do you think it happened and what did it mean to you?", "What can you learn from this? Any lessons that can be learnt?"])
+        CoreDataManager().saveUserJournals("Problem Solving", "4", ["What is a problem you’ve been facing recently that you’d like to solve?", "Can you break down the problem to a deeper level?", "What are some simple steps you can do to tackle the root causes of the problem and help tackle it?"])
+        CoreDataManager().saveUserJournals("Goal Setting", "5", ["Write down a goal you want to accomplish over the next year, make it specific and measurable.", "Why do you want to achieve it?", "What steps are necessary to achieve it?"])
+        CoreDataManager().saveUserJournals("My Journal", "6", ["Did I get angry today? Why?","What did I do wrong today?","What did I do right today?","What could I have done differently?","What made today great?", "What did I work on/learn today?", "Any extra thoughts on the day?"])
         CoreDataManager().load("UserJournals") { [self] (returnedArray: [NSManagedObject]) in
             let savedJournals = returnedArray as! [UserJournals]
             for journal in savedJournals {

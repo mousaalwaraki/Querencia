@@ -18,15 +18,14 @@ class ResourcesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        newsTable.delegate = self
-        newsTable.dataSource = self
-        
         PublicCoreDataManager().loadPublic("Resource") { [self] (records) in
             resources.removeAll()
             for record in records {
                 resources.append(Resource(record: record))
             }
             DispatchQueue.main.async {
+                newsTable.delegate = self
+                newsTable.dataSource = self
                 newsTable.reloadData()
             }
         }
@@ -47,7 +46,8 @@ extension ResourcesViewController: UITableViewDelegate, UITableViewDataSource {
         let category = Category.allCases[section]
         
         if category != .book {
-            return resources.filter({Category(rawValue: $0.category ) == Category.allCases[section]}).count
+//            return resources.filter({Category(rawValue: $0.category ) == Category.allCases[section]}).count
+            if resources.count != 0 { return 3 } else { return 0}
         } else {
             return 1
         }
@@ -88,7 +88,8 @@ extension ResourcesViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             resourceChoice = .video
         }
-        let vc = storyboard?.instantiateViewController(identifier: "allResourcesViewController")
+        let vc = storyboard?.instantiateViewController(identifier: "allResourcesViewController") as? AllResourcesViewController
+        vc?.chosenChoice = resourceChoice?.getCase() ?? ""
         let navController = UINavigationController(rootViewController: vc!)
         present(navController, animated: true)
     }

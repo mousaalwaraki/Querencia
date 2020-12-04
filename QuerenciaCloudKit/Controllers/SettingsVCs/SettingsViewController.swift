@@ -10,6 +10,7 @@ import CoreData
 import MessageUI
 import HintPod
 import LocalAuthentication
+import SafariServices
 
 class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate {
 
@@ -24,7 +25,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sections.append(("Configuration", [.password, .editJournals, .notifications, .editTags]))
+        sections.append(("Configuration", [.password, .editJournals, .editTags, .notifications]))
         sections.append(("Privacy", [.terms, .mission]))
         sections.append(("Spread the love", [.contact, .share, .suggestFeature]))
         
@@ -147,15 +148,17 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tappedShare() {
-         guard let url = URL(string: "https://apps.apple.com/gb/app/querencia/id1512500064") else {
-         return
-         }
-         
-         let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-         activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
-         
-         // present the view controller
-         self.present(activityViewController, animated: true, completion: nil)
+        guard let url = URL(string: "https://apps.apple.com/gb/app/querencia/id1512500064") else {
+            return
+        }
+        
+        let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        activityViewController.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+        activityViewController.popoverPresentationController?.permittedArrowDirections = []
+        
+        // present the view controller
+        self.present(activityViewController, animated: true, completion: nil)
     }
     
     func tappedContact() {
@@ -171,11 +174,10 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         if UIDevice.current.userInterfaceIdiom == .pad {
-                    alert.popoverPresentationController?.sourceView = self.view
-                    alert.popoverPresentationController?.sourceRect = CGRect(x: profileTableView.cellForRow(at: IndexPath(row: 1, section: 1))!.frame.midX, y: (profileTableView.cellForRow(at: IndexPath(row: 0, section: 1))!.frame.maxY) + (80) + (40), width: 0, height: 0)
-        //            self.view.bounds.midX
-                    alert.popoverPresentationController?.permittedArrowDirections = [.up]
-                }
+            alert.popoverPresentationController?.sourceView = self.view
+            alert.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            alert.popoverPresentationController?.permittedArrowDirections = []
+        }
         self.present(alert, animated: true)
     }
     

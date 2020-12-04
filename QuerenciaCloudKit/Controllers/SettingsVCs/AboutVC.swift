@@ -33,6 +33,8 @@ class AboutVC: UIViewController {
         
         let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        activityViewController.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+        activityViewController.popoverPresentationController?.permittedArrowDirections = []
 
         // present the view controller
         self.present(activityViewController, animated: true, completion: nil)

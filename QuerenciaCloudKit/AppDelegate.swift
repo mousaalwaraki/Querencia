@@ -13,7 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-//        CoreDataManager().deleteAll()
+//        CoreDataManager().deleteResponses()
+//        CoreDataManager().deleteJournals()
         UITabBar.appearance().tintColor = UIColor.whatsNewKitRed
         return true
     }
@@ -61,17 +62,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return container
     }()
     
-    lazy var publicPersistentContainer: NSPersistentCloudKitContainer = {
-        let container = NSPersistentCloudKitContainer(name: "ResourceModel")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        container.persistentStoreDescriptions.first?.cloudKitContainerOptions?.databaseScope = .public
-        return container
-    }()
-    
     static var persistentContainer: NSPersistentContainer {
     return (UIApplication.shared.delegate as! AppDelegate).persistentContainer
     }
@@ -81,17 +71,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         viewContext.automaticallyMergesChangesFromParent = true
         return viewContext
     }
-    
-    static var publicPersistentContainer: NSPersistentCloudKitContainer {
-        return (UIApplication.shared.delegate as! AppDelegate).publicPersistentContainer
-    }
-    
-    static var publicViewContext: NSManagedObjectContext {
-        let viewContext = publicPersistentContainer.viewContext
-        viewContext.automaticallyMergesChangesFromParent = true
-        return viewContext
-    }
-    
 
     // MARK: - Core Data Saving support
 

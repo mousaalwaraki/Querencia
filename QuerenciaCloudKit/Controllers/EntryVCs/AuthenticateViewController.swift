@@ -28,9 +28,9 @@ class AuthenticateViewController: UIViewController {
     func authenticatePassword() {
         let context:LAContext = LAContext()
         
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error:nil) {
+        if context.canEvaluatePolicy(.deviceOwnerAuthentication, error:nil) {
             
-            context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Message") { (success, fail) in
+            context.evaluatePolicy(LAPolicy.deviceOwnerAuthentication, localizedReason: "Message") { (success, fail) in
                 if success {
                     DispatchQueue.main.async {
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "tabBar")

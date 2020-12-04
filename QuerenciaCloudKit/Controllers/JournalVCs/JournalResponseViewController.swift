@@ -19,6 +19,7 @@ class JournalResponseViewController: UIViewController {
     var journalEntry: UserResponses?
     var entryQuestion = [String]()
     var entryResponses = [String]()
+    var buttonTitle = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +37,15 @@ class JournalResponseViewController: UIViewController {
                 }
             }
         }
+        
+        if number == (chosenJournal?.questions!.count)! - 1 {
+            buttonTitle = "Done"
+        } else { buttonTitle = "Next"}
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: buttonTitle, style: .plain, target: self, action: #selector(addTapped))
+            
     }
     
-    @IBAction func nextButtonTapped(_ sender: Any) {
+    @objc func addTapped() {
         if answerTextView.text.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
             entryQuestion.append(questionLabel.text!)
             entryResponses.append(answerTextView.text)

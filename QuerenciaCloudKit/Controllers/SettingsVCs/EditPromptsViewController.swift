@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class EditPromptsViewController: UIViewController, QuestionCellDelegate, UITextViewDelegate {
     
@@ -13,7 +14,7 @@ class EditPromptsViewController: UIViewController, QuestionCellDelegate, UITextV
     @IBOutlet weak var inspirationButton: UIButton!
     @IBOutlet weak var questionsTableView: UITableView!
     
-    var chosenJournal: UserJournals?
+    var chosenJournalTitle: String?
     var questions = [String]()
     var journalTitle: String?
     
@@ -26,8 +27,19 @@ class EditPromptsViewController: UIViewController, QuestionCellDelegate, UITextV
         let addButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addQuestion))
         self.navigationItem.rightBarButtonItem  = addButton
         
-        journalTitle = chosenJournal?.title
-        questions = chosenJournal?.questions ?? []
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        CoreDataManager().load("UserJournals") { [self] (returnedArray: [NSManagedObject]) in
+            let allJournals = returnedArray as! [UserJournals]
+            for journal in allJournals {
+                if chosenJournalTitle == journal.title {
+                    journalTitle = journal.title
+                    questions = journal.questions ?? []
+                }
+            }
+            questionsTableView.reloadData()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -52,7 +64,7 @@ class EditPromptsViewController: UIViewController, QuestionCellDelegate, UITextV
     
     @IBAction func needInspoButtonTapped(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(identifier: "InspirationViewController") as? InspirationViewController
-        vc?.userjournal = chosenJournal
+        vc?.userjournalTitle = chosenJournalTitle
         navigationController?.pushViewController(vc!, animated: true)
         
     }

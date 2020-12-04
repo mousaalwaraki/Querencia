@@ -32,6 +32,8 @@ class PromptsTableViewCell: UITableViewCell {
     @IBAction func promptAddButtonTapped(_ sender: Any) {
         
         vc?.userPrompts.append(promptTextView.text)
+        vc?.allPrompts.removeAll(where: ({$0 == promptTextView.text}))
+        vc?.promptsTableView.reloadData()
         delegate?.promptAddedShow()
         
     }

@@ -34,6 +34,8 @@ class EditJournalsViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         CoreDataManager().load("UserJournals") { [self] (returnedArray: [NSManagedObject]) in
             journals = returnedArray as? [UserJournals] ?? []
+            journals.sort(by: ({$0.userTitle! < $1.userTitle!}))
+            journalsTable.reloadData()
         }
     }
     
@@ -86,7 +88,8 @@ extension EditJournalsViewController: UITableViewDelegate, UITableViewDataSource
         alert.addAction(UIAlertAction(title: "Rename", style: .default, handler: { [self] _ in presentEditAlert() }))
         alert.addAction(UIAlertAction(title: "Edit Questions", style: .default, handler: { [self] _ in
             let vc = storyboard?.instantiateViewController(identifier: "EditPromptsViewController") as? EditPromptsViewController
-            vc?.chosenJournal = journals[indexPath.row]
+            UserDefaults.standard.setValue(journals[indexPath.row].title, forKey: "JournalTitle")
+            vc?.chosenJournalTitle = journals[indexPath.row].title
             navigationController?.pushViewController(vc!, animated: true)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))

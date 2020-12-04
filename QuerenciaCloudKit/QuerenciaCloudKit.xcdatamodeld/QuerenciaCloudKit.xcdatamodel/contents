@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="UserJournals" representedClassName="UserJournals" syncable="YES" codeGenerationType="class">
-        <attribute name="questions" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[String]"/>
+        <attribute name="questions" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="[String]"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="userTitle" optional="YES" attributeType="String"/>
     </entity>
     <entity name="UserResponses" representedClassName="UserResponses" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="String"/>
         <attribute name="dayFeeling" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="dayQuestions" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[String]"/>
-        <attribute name="dayResponses" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[String]"/>
-        <attribute name="dayTags" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[String]"/>
+        <attribute name="dayQuestions" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="[String]"/>
+        <attribute name="dayResponses" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="[String]"/>
+        <attribute name="dayTags" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="[String]"/>
         <attribute name="journalName" optional="YES" attributeType="String"/>
     </entity>
     <entity name="UserTags" representedClassName="UserTags" syncable="YES" codeGenerationType="class">
-        <attribute name="allTags" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[String]"/>
+        <attribute name="allTags" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="[String]"/>
     </entity>
     <elements>
-        <element name="UserJournals" positionX="-27" positionY="45" width="128" height="88"/>
-        <element name="UserResponses" positionX="-63" positionY="-18" width="128" height="133"/>
-        <element name="UserTags" positionX="-45" positionY="36" width="128" height="58"/>
+        <element name="UserJournals" positionX="-27" positionY="45" width="128" height="74"/>
+        <element name="UserResponses" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="UserTags" positionX="-45" positionY="36" width="128" height="44"/>
     </elements>
 </model>

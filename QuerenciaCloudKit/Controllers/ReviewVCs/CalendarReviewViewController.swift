@@ -12,6 +12,7 @@ import Charts
 
 class CalendarReviewViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource {
 
+    @IBOutlet weak var addDataLabel: UILabel!
     @IBOutlet weak var historyTagsCollectionView: UICollectionView!
     @IBOutlet weak var viewForBackground: UIView!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -56,19 +57,18 @@ class CalendarReviewViewController: UIViewController, FSCalendarDelegate, FSCale
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        datePicker.preferredDatePickerStyle = UIDatePickerStyle.wheels
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = UIDatePickerStyle.wheels
+        } else {
+            // Fallback on earlier versions
+        }
         navigationController?.navigationBar.prefersLargeTitles = false
         
-        CoreDataManager().load("UserResponses") { [self] (returnedArray: [NSManagedObject]) in
-            responses = returnedArray as! [UserResponses]
-        }
-        CoreDataManager().load("UserTags") { [self] (returnedArray: [NSManagedObject]) in
-            let allTags = returnedArray[0] as! UserTags
-            tagsTag = allTags.allTags ?? []
-        }
-        datePicker.preferredDatePickerStyle = .wheels
         styleSegmentedControl()
+        
         removeAllSetup()
+        horizontalBarChart.noDataText = "Pick an activity to get mood data!"
+        
         heightConstraintDatePicker = NSLayoutConstraint(item: datePicker!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 0)
         heightConstraintDatePicker.isActive = true
         
@@ -77,10 +77,26 @@ class CalendarReviewViewController: UIViewController, FSCalendarDelegate, FSCale
     
     override func viewWillDisappear(_ animated: Bool) {
         tags.removeAll()
+        repeatedTags.removeAll()
+        moodEntries?.removeAll()
+        activitesTag.removeAll()
         entries?.removeAll()
+        chosenTag = nil
+        horizontalBarChart.data = nil
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        CoreDataManager().load("UserTags") { [self] (returnedArray: [NSManagedObject]) in
+            let allTags = returnedArray[0] as! UserTags
+            tagsTag = allTags.allTags ?? []
+        }
+        
+        
+        CoreDataManager().load("UserResponses") { [self] (returnedArray: [NSManagedObject]) in
+            responses = returnedArray as! [UserResponses]
+        }
+        
         CoreDataManager().load("UserResponses") { [self] (returnedArray: [NSManagedObject]) in
             moodEntries = returnedArray as? [UserResponses]
             entries = returnedArray as? [UserResponses]
@@ -94,10 +110,27 @@ class CalendarReviewViewController: UIViewController, FSCalendarDelegate, FSCale
                     }
                 }
             }
+            getTodaysDate()
+            getResults(at: combinedCurrentDate!)
+            calendar.select(combinedDate)
+            activitiesCollectionView.reloadData()
+        }
+        
+        CoreDataManager().load("UserResponses") { [self] (returnedArray: [NSManagedObject]) in
+            moodEntries = returnedArray as? [UserResponses] ?? []
+            for entry in moodEntries ?? [] {
+                if entry.dayFeeling == selected ?? 999 {
+                    for tag in entry.dayTags ?? [] {
+                        repeatedTags.append(tag)
+                    }
+                }
+            }
+            getPrompts()
         }
     }
     
     func removeAllSetup() {
+        addDataLabel.alpha = 0
         historyTagsCollectionView.alpha = 0
         viewForBackground.alpha = 0
         calendar.alpha = 0
@@ -115,7 +148,11 @@ class CalendarReviewViewController: UIViewController, FSCalendarDelegate, FSCale
         activitiesCollectionView.alpha = 0
         tagsTagCollectionContainingView.alpha = 0
         
+        addDataLabel.text = "Rate your day and add activities to be able to analyse your data!"
+        
+        horizontalBarChart.data = nil
         tags.removeAll()
+        chosenTag = nil
         repeatedTags.removeAll()
         selected = nil
         promptsReviewArray.removeAll()
@@ -210,7 +247,9 @@ class CalendarReviewViewController: UIViewController, FSCalendarDelegate, FSCale
         }
         promptsReviewArray.sort(by: {$0.count! > $1.count!})
         array.removeAll()
-        for _ in 0...2 {
+        var number = Int()
+        if promptsReviewArray.count < 3 { number = promptsReviewArray.count - 1 } else { number = 2 }
+        for _ in 0...number {
             array.append(promptsReviewArray[0].prompt!)
             promptsReviewArray.remove(at: 0)
         }
@@ -274,7 +313,7 @@ class CalendarReviewViewController: UIViewController, FSCalendarDelegate, FSCale
     }
     
     @IBAction func reviewJournal(_ sender: Any) {
-        if entry?.journalName == nil {
+        if entry?.journalName == "" || entry?.journalName == nil {
             UIView.animate(withDuration: 0.3) {
                 self.alertPopUpView.alpha = 1
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -340,11 +379,15 @@ class CalendarReviewViewController: UIViewController, FSCalendarDelegate, FSCale
     
     func runUpdateCells() {
         for tag in 0...activitesTag.count - 1 {
-            let cell = activitiesCollectionView.dequeueReusableCell(withReuseIdentifier: "activityCell", for: IndexPath(item: tag, section: 0)) as! ActivitiesCollectionViewCell
+            let cell = activitiesCollectionView.cellForItem(at: IndexPath(row: tag, section: 0)) as! ActivitiesCollectionViewCell
             if cell.activitiesLabel.text == chosenTag {
                 cell.backgroundColor = .whatsNewKitRed
                 cell.activitiesLabel.textColor = .whatsNewKitWhite
                 cell.layer.borderColor = UIColor.whatsNewKitBlack.cgColor
+            } else {
+                cell.backgroundColor = .clear
+                cell.layer.borderColor = UIColor.whatsNewKitRed.cgColor
+                cell.activitiesLabel.textColor = .whatsNewKitRed
             }
         }
     }
@@ -414,11 +457,18 @@ extension CalendarReviewViewController: UICollectionViewDelegate, UICollectionVi
         if collectionView == historyTagsCollectionView {
             return tags.count
         } else if collectionView == activitiesCollectionView {
+            if reviewBySegmentedControl.selectedSegmentIndex == 1 {
+                if activitesTag.count == 0 { activitiesCollectionView.alpha = 0; horizontalBarChart.alpha = 0; addDataLabel.alpha = 1; tagsTagCollectionContainingView.alpha = 0} else { activitiesCollectionView.alpha = 1; horizontalBarChart.alpha = 1; addDataLabel.alpha = 0; tagsTagCollectionContainingView.alpha = 1 }}
             return activitesTag.count
         } else if collectionView == moodCollectionView {
+            if reviewBySegmentedControl.selectedSegmentIndex == 0 {
+                if entries?.count == 0 { moodToFilterBy.alpha = 0 } else { moodToFilterBy.alpha = 1 }
+                if entries?.count == 0 && promptsReviewArray.count == 0 { addDataLabel.text = "Rate your day and add activities to be able to analyse your data!"} else if selected != nil { addDataLabel.text = "No activities for this mood."} else { addDataLabel.text = "Pick a mood to see the most tagged activities!" }
+            }
             return smileys.count
         } else {
-            if promptsReviewArray.count == 0 {showTopTagsCollectionView(0)} else {showTopTagsCollectionView(1)}
+            if reviewBySegmentedControl.selectedSegmentIndex == 0 {
+                if promptsReviewArray.count == 0 {showTopTagsCollectionView(0); addDataLabel.alpha = 1} else {showTopTagsCollectionView(1); addDataLabel.alpha = 0}}
             return promptsReviewArray.count
         }
     }
@@ -430,6 +480,7 @@ extension CalendarReviewViewController: UICollectionViewDelegate, UICollectionVi
             cell.tagLabel.text = tags[indexPath.row]
             cell.backgroundColor = .whatsNewKitRed
             cell.tagLabel.textColor = .whatsNewKitWhite
+            cell.layer.borderColor = UIColor.whatsNewKitBlack.cgColor
             cell.layer.borderWidth = 0.5
             cell.layer.cornerRadius = 8
             
@@ -481,9 +532,10 @@ extension CalendarReviewViewController: UICollectionViewDelegate, UICollectionVi
                 cell.bgView.backgroundColor = .whatsNewKitRed
                 cell.bgView.layer.cornerRadius = cell.bgView.frame.width/2
                 selected = indexPath.row
+                addDataLabel.text = "No activities for this mood."
             } else {
                 cell.bgView.backgroundColor = .clear
-                selected = 999
+                selected = nil
             }
             repeatedTags.removeAll()
             moodEntries?.removeAll()
@@ -508,8 +560,10 @@ extension CalendarReviewViewController: UICollectionViewDelegate, UICollectionVi
                 let tagToMove = activitesTag[indexPath.row]
                 activitesTag.remove(at: indexPath.row)
                 activitesTag.insert(tagToMove, at: 0)
+                
                 let tagsIndexPath = IndexPath(item: 0, section: 0)
                 activitiesCollectionView.moveItem(at: indexPath, to: tagsIndexPath)
+                runUpdateCells()
                 activitiesCollectionView.reloadData()
             }
             
@@ -553,6 +607,8 @@ extension CalendarReviewViewController: UITableViewDelegate, UITableViewDataSour
         cell.topPromptImage.image = UIImage(named: "\(indexPath.row + 1)")
         cell.topPromptLabel.text = " " + array[indexPath.row] + " "
         cell.topPromptLabel.layer.backgroundColor = UIColor.whatsNewKitRed.cgColor
+        cell.topPromptLabel.layer.borderColor = UIColor.whatsNewKitBlack.cgColor
+        cell.topPromptLabel.layer.borderWidth = 0.5
         cell.topPromptLabel.layer.cornerRadius = 8
         if indexPath.row == 0 {
             cell.layer.cornerRadius = 12
@@ -566,14 +622,13 @@ extension CalendarReviewViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        tableView.frame.height/3
+        tableView.frame.height/CGFloat(array.count)
     }
 }
 
 extension CalendarReviewViewController: ChartViewDelegate {
     
     func setUpBarChart() {
-        
         var entries = [BarChartDataEntry]()
         for smiley in 0...smileys.count - 1 {
             var number = 0.0
@@ -585,6 +640,7 @@ extension CalendarReviewViewController: ChartViewDelegate {
             let entry = BarChartDataEntry(x: Double(smiley), y: number)
             entries.append(entry)
         }
+        
         var zeroValues = 0
         
         for entry in entries {
@@ -593,7 +649,7 @@ extension CalendarReviewViewController: ChartViewDelegate {
             }
         }
         if zeroValues == 5 {
-            entries.removeAll()
+            horizontalBarChart.data = nil
         }
         
         horizontalBarChart.xAxis.valueFormatter = IndexAxisValueFormatter(values: smileys)

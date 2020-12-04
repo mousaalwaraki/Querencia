@@ -2,7 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jtH-Oq-cEs">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -48,7 +50,9 @@
         <scene sceneID="wZV-XL-ISS">
             <objects>
                 <navigationController id="zXJ-qv-YHB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Analytics" image="chart.bar.doc.horizontal" catalog="system" id="SKm-1Q-pBp"/>
+                    <tabBarItem key="tabBarItem" title="Analytics" id="SKm-1Q-pBp">
+                        <imageReference key="image" image="chart.bar.doc.horizontal" catalog="system" symbolScale="default"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lVk-Wm-f1w">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -252,7 +256,9 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DMj-QQ-oyY">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
-                                        <state key="normal" title="Click here for more reflection on your day!"/>
+                                        <state key="normal" title="Click here for more reflection on your day!">
+                                            <color key="titleColor" name="selectedMenuItemTextColor" catalog="System" colorSpace="catalog"/>
+                                        </state>
                                         <connections>
                                             <action selector="journalButtonTapped:" destination="cE0-KB-vUc" eventType="touchUpInside" id="Tgo-wo-PkZ"/>
                                         </connections>
@@ -292,6 +298,7 @@
                         <outlet property="journalButtonView" destination="4Rb-FV-QLt" id="DWM-85-JQ8"/>
                         <outlet property="motivationalQuoteCard" destination="4iD-UI-Z8E" id="JsU-S0-WJy"/>
                         <outlet property="quoteText" destination="pui-Yf-gvK" id="Cog-Jl-lHG"/>
+                        <outlet property="reeflectMoreButton" destination="DMj-QQ-oyY" id="6cy-kC-NKm"/>
                         <outlet property="smileyCollectionView" destination="Et4-nD-3yB" id="wDG-I7-tti"/>
                         <outlet property="smileyView" destination="oDd-eU-qFM" id="oCk-VT-1VB"/>
                         <outlet property="tagsCollectionView" destination="laJ-xl-zfX" id="hp7-se-dcO"/>
@@ -518,7 +525,7 @@
             </objects>
             <point key="canvasLocation" x="440.57971014492756" y="918.75"/>
         </scene>
-        <!--Review-->
+        <!--Analytics-->
         <scene sceneID="EGp-Vi-gSy">
             <objects>
                 <viewController id="8Yz-kl-gN5" customClass="CalendarReviewViewController" customModule="QuerenciaCloudKit" customModuleProvider="target" sceneMemberID="viewController">
@@ -526,6 +533,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate your day and add activities to be able to analyse your data!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Owv-x0-low">
+                                <rect key="frame" x="20" y="427.5" width="374" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QBU-2M-dJY">
                                 <rect key="frame" x="92" y="98" width="230" height="32"/>
                                 <segments>
@@ -548,7 +561,7 @@
                                         <color key="value" red="0.99701660869999997" green="0.40481421350000002" blue="0.37643691899999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="eventSelectionColor">
-                                        <color key="value" systemColor="linkColor"/>
+                                        <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
                                         <color key="value" red="0.99701660869999997" green="0.40481421350000002" blue="0.37643691899999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -949,9 +962,11 @@
                             <constraint firstItem="vjh-xq-kPn" firstAttribute="leading" secondItem="519-Mr-yDe" secondAttribute="leading" constant="20" id="09P-oI-4PI"/>
                             <constraint firstItem="h0x-EL-ikz" firstAttribute="leading" secondItem="519-Mr-yDe" secondAttribute="leading" constant="20" id="1iJ-58-joL"/>
                             <constraint firstItem="519-Mr-yDe" firstAttribute="trailing" secondItem="V9q-BX-urO" secondAttribute="trailing" constant="50" id="1xA-TA-112"/>
+                            <constraint firstItem="Owv-x0-low" firstAttribute="centerX" secondItem="b9L-F8-UGJ" secondAttribute="centerX" id="1xH-aB-G6y"/>
                             <constraint firstItem="QBU-2M-dJY" firstAttribute="top" secondItem="519-Mr-yDe" secondAttribute="top" constant="10" id="2e2-z3-H9x"/>
                             <constraint firstItem="V9q-BX-urO" firstAttribute="leading" secondItem="519-Mr-yDe" secondAttribute="leading" constant="50" id="40f-k0-neE"/>
                             <constraint firstItem="vjh-xq-kPn" firstAttribute="top" secondItem="dsu-jn-VrX" secondAttribute="bottom" constant="10" id="4nz-vL-bpF"/>
+                            <constraint firstItem="Owv-x0-low" firstAttribute="centerY" secondItem="b9L-F8-UGJ" secondAttribute="centerY" id="6kw-P9-Qra"/>
                             <constraint firstItem="vjh-xq-kPn" firstAttribute="trailing" secondItem="519-Mr-yDe" secondAttribute="trailing" constant="-20" id="7ZI-2b-QA6"/>
                             <constraint firstItem="519-Mr-yDe" firstAttribute="bottom" secondItem="V9q-BX-urO" secondAttribute="bottom" constant="20" id="7oo-ap-ICp"/>
                             <constraint firstItem="h0x-EL-ikz" firstAttribute="top" secondItem="cYX-7f-7te" secondAttribute="bottom" constant="10" id="8iv-Rl-QHG"/>
@@ -986,6 +1001,7 @@
                             <constraint firstItem="UGP-2u-axY" firstAttribute="leading" secondItem="519-Mr-yDe" secondAttribute="leading" id="oDq-ri-NL5"/>
                             <constraint firstItem="dsu-jn-VrX" firstAttribute="leading" secondItem="519-Mr-yDe" secondAttribute="leading" constant="20" id="oHf-1a-02H"/>
                             <constraint firstItem="cYX-7f-7te" firstAttribute="leading" secondItem="519-Mr-yDe" secondAttribute="leading" constant="20" id="rGa-Yf-Erd"/>
+                            <constraint firstItem="Owv-x0-low" firstAttribute="leading" secondItem="519-Mr-yDe" secondAttribute="leading" constant="20" id="roB-yT-JSW"/>
                             <constraint firstItem="519-Mr-yDe" firstAttribute="trailing" secondItem="h0x-EL-ikz" secondAttribute="trailing" constant="20" id="tjR-wn-xAm"/>
                             <constraint firstItem="519-Mr-yDe" firstAttribute="bottom" secondItem="h0x-EL-ikz" secondAttribute="bottom" constant="10" id="uQH-HI-8AP"/>
                             <constraint firstAttribute="bottom" secondItem="0WR-xp-G9E" secondAttribute="bottom" id="umt-MR-PHw"/>
@@ -993,9 +1009,10 @@
                             <constraint firstItem="1Ar-po-xmO" firstAttribute="trailing" secondItem="519-Mr-yDe" secondAttribute="trailing" id="yLO-hd-stF"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Review" id="5di-T7-oJd"/>
+                    <navigationItem key="navigationItem" title="Analytics" id="5di-T7-oJd"/>
                     <connections>
                         <outlet property="activitiesCollectionView" destination="w45-ag-Nod" id="PO9-n5-Iqi"/>
+                        <outlet property="addDataLabel" destination="Owv-x0-low" id="G5I-mQ-UhA"/>
                         <outlet property="alertPopUpView" destination="V9q-BX-urO" id="yEb-4N-jG3"/>
                         <outlet property="calendar" destination="UGP-2u-axY" id="FeL-NB-yoX"/>
                         <outlet property="datePicker" destination="1Ar-po-xmO" id="eX0-VE-YUX"/>
@@ -1030,25 +1047,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5Au-kg-BGs">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="5Au-kg-BGs">
                                 <rect key="frame" x="0.0" y="114" width="414" height="748"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="journalCell" rowHeight="103" id="Nvh-DA-VKs" customClass="JournalReviewTableViewCell" customModule="QuerenciaCloudKit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="103"/>
+                                        <rect key="frame" x="20" y="55.5" width="374" height="103"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nvh-DA-VKs" id="fhN-zI-ZuC">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="103"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="103"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGB-hB-1Sg">
-                                                    <rect key="frame" x="40" y="16" width="334" height="20.5"/>
+                                                    <rect key="frame" x="40" y="16" width="294" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4e-u3-AX0">
-                                                    <rect key="frame" x="40" y="66.5" width="334" height="20.5"/>
+                                                    <rect key="frame" x="40" y="66.5" width="294" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1948,9 +1965,6 @@
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
