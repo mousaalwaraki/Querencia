@@ -29,9 +29,9 @@ Removing prompts from inspiration after user adds them.
 Biometric/passcode integration was new, however was much easier than expected.   
 To not send notifications if user already journaled was relatively difficult especially that the database is set up to create an empty document in the database when user opens app.     
 
-## Appstore link and description
+## AppStore link and description
 
-Appstore link: https://apps.apple.com/us/app/querencia/id1512500064#?platform=iphone
+AppStore link: https://apps.apple.com/us/app/querencia/id1512500064#?platform=iphone
 
 Querencia is the area in the arena taken by the bull to draw it's power and be at ease in a fight. It's the place where the bull feels safest and most at home.
 
