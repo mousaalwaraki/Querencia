@@ -20,7 +20,8 @@ Querencia is designed to make habit tracking and journaling as simple as possibl
 
 ## Challenges
 
-I had created journal using firebase as a backend, however I always had reservations on using firebase. My main concern was security but performance was also a big concern.  
+I had created journal using firebase as a backend, however I always had reservations on using firebase. My main concern was security but performance was also a big concern.    
+
 For that reason I wanted to rewrite it using only CoreData. With minimial prior experience in CoreData this was very challenging. However after successfully  rewriting it, I realised that I also needed to create a Public Database for the resources page. This was initially challenging as I had never worked with CloudKit and finding support on it online was more difficult than finding support for CoreData. Once I grasped the basics though, it became very easy to power through it and it became quite simple to create and use CloudKit including CloudKit dashboard.   
 
 Other challenges include:     
