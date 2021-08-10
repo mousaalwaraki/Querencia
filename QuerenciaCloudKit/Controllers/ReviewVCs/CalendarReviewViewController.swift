@@ -10,7 +10,7 @@ import FSCalendar
 import CoreData
 import Charts
 
-class CalendarReviewViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource {
+class CalendarReviewViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var addDataLabel: UILabel!
     @IBOutlet weak var historyTagsCollectionView: UICollectionView!
@@ -127,6 +127,10 @@ class CalendarReviewViewController: UIViewController, FSCalendarDelegate, FSCale
             }
             getPrompts()
         }
+        
+        if reviewBySegmentedControl.selectedSegmentIndex == 2 {
+            addDataLabel.alpha = 0
+        }
     }
     
     func removeAllSetup() {
@@ -185,6 +189,7 @@ class CalendarReviewViewController: UIViewController, FSCalendarDelegate, FSCale
     }
     
     func setUpTags() {
+        
         horizontalBarChart.alpha = 1
         activitiesCollectionView.alpha = 1
         tagsTagCollectionContainingView.alpha = 1
@@ -233,6 +238,7 @@ class CalendarReviewViewController: UIViewController, FSCalendarDelegate, FSCale
         if repeatedTags.count == 0 {
             topTagsTable.reloadData()
             topTagsCollectiionView.reloadData()
+            addDataLabel.alpha = 1
             return
         }
         for tag in repeatedTags {
@@ -255,6 +261,7 @@ class CalendarReviewViewController: UIViewController, FSCalendarDelegate, FSCale
         }
         topTagsTable.reloadData()
         topTagsCollectiionView.reloadData()
+        if array.count == 0 {addDataLabel.alpha = 1} else {addDataLabel.alpha = 0}
     }
     
     @IBAction func tapOnBgView(_ sender: Any) {
@@ -379,15 +386,15 @@ class CalendarReviewViewController: UIViewController, FSCalendarDelegate, FSCale
     
     func runUpdateCells() {
         for tag in 0...activitesTag.count - 1 {
-            let cell = activitiesCollectionView.cellForItem(at: IndexPath(row: tag, section: 0)) as! ActivitiesCollectionViewCell
-            if cell.activitiesLabel.text == chosenTag {
-                cell.backgroundColor = .whatsNewKitRed
-                cell.activitiesLabel.textColor = .whatsNewKitWhite
-                cell.layer.borderColor = UIColor.whatsNewKitBlack.cgColor
+            let cell = activitiesCollectionView.cellForItem(at: IndexPath(row: tag, section: 0)) as? ActivitiesCollectionViewCell
+            if cell?.activitiesLabel.text == chosenTag {
+                cell?.backgroundColor = .whatsNewKitRed
+                cell?.activitiesLabel.textColor = .whatsNewKitWhite
+                cell?.layer.borderColor = UIColor.whatsNewKitBlack.cgColor
             } else {
-                cell.backgroundColor = .clear
-                cell.layer.borderColor = UIColor.whatsNewKitRed.cgColor
-                cell.activitiesLabel.textColor = .whatsNewKitRed
+                cell?.backgroundColor = .clear
+                cell?.layer.borderColor = UIColor.whatsNewKitRed.cgColor
+                cell?.activitiesLabel.textColor = .whatsNewKitRed
             }
         }
     }
@@ -463,12 +470,12 @@ extension CalendarReviewViewController: UICollectionViewDelegate, UICollectionVi
         } else if collectionView == moodCollectionView {
             if reviewBySegmentedControl.selectedSegmentIndex == 0 {
                 if entries?.count == 0 { moodToFilterBy.alpha = 0 } else { moodToFilterBy.alpha = 1 }
-                if entries?.count == 0 && promptsReviewArray.count == 0 { addDataLabel.text = "Rate your day and add activities to be able to analyse your data!"} else if selected != nil { addDataLabel.text = "No activities for this mood."} else { addDataLabel.text = "Pick a mood to see the most tagged activities!" }
+                if entries?.count == 0 && array.count == 0 { addDataLabel.text = "Rate your day and add activities to be able to analyse your data!"} else if selected != nil { addDataLabel.text = "No activities for this mood."} else { addDataLabel.text = "Pick a mood to see the most tagged activities!" }
             }
             return smileys.count
         } else {
             if reviewBySegmentedControl.selectedSegmentIndex == 0 {
-                if promptsReviewArray.count == 0 {showTopTagsCollectionView(0); addDataLabel.alpha = 1} else {showTopTagsCollectionView(1); addDataLabel.alpha = 0}}
+                if promptsReviewArray.count == 0 {showTopTagsCollectionView(0)} else {showTopTagsCollectionView(1)}}
             return promptsReviewArray.count
         }
     }
@@ -497,7 +504,7 @@ extension CalendarReviewViewController: UICollectionViewDelegate, UICollectionVi
                 cell.backgroundColor = .whatsNewKitRed
                 cell.activitiesLabel.textColor = .whatsNewKitWhite
                 cell.layer.borderColor = UIColor.whatsNewKitBlack.cgColor
-                activitiesCollectionView.reloadData()
+//                activitiesCollectionView.reloadData()
             }
             return cell
         } else  if collectionView == moodCollectionView {
@@ -564,13 +571,31 @@ extension CalendarReviewViewController: UICollectionViewDelegate, UICollectionVi
                 let tagsIndexPath = IndexPath(item: 0, section: 0)
                 activitiesCollectionView.moveItem(at: indexPath, to: tagsIndexPath)
                 runUpdateCells()
-                activitiesCollectionView.reloadData()
+                activitiesCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+//                activitiesCollectionView.reloadData()
             }
             
             setUpBarChart()
         }
     }
     
+
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        // your code here
+//        //width and height as per your requirement
+//        if collectionView == activitiesCollectionView {
+//            if activitiesCollectionView.visibleCells.count == 0 { return CGSize(width: 300, height: 150) } else {
+//        let cell = activitiesCollectionView.cellForItem(at: indexPath) as! ActivitiesCollectionViewCell
+//        let width = cell.activitiesLabel.frame.width + 5
+//        let height = cell.activitiesLabel.frame.height + 3
+//        return CGSize(width: width, height: height)
+//            }
+//        } else {
+//            return CGSize(width: 100, height: 10)
+//        }
+//    }
 }
 
 extension CalendarReviewViewController {
